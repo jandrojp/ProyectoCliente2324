@@ -16,7 +16,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/textView4"
+            android:id="@+id/tvPrecioTotal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -27,7 +27,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/tvTotalPagar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
