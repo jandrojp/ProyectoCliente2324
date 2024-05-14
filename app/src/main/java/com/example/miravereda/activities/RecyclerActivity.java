@@ -1,6 +1,8 @@
 package com.example.miravereda.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,6 +20,7 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
 
     private Root root;
     private RecyclerView recyclerView;
+    private Button botonCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +43,16 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
         hideProgress();
 
         recyclerView = findViewById(R.id.recycler);
+        botonCarrito = findViewById(R.id.bttnCompra);
+
         recyclerView.setAdapter(new Adaptador(this, root));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
+
+        botonCarrito.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CestaActivity.class);
+            startActivity(intent);
+        });
     }
 }

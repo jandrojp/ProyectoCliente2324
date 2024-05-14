@@ -38,6 +38,10 @@
         <activity
             android:name="com.example.miravereda.activities.DetailsActivity">
         </activity>
+
+        <activity
+            android:name="com.example.miravereda.activities.CestaActivity">
+        </activity>
     </application>
 
 </manifest>
