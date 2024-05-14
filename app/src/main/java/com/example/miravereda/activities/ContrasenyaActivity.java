@@ -5,7 +5,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 
-import es.ieslavereda.miravereda.R;
+import es.ieslavereda.miravereda.R;;
 
 public class ContrasenyaActivity extends AppCompatActivity {
 
@@ -17,7 +17,6 @@ public class ContrasenyaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_contrasenya);
 
         actualizarContrasenya = findViewById(R.id.bttnActualizarContrasenya);
-
         actualizarContrasenya.setOnClickListener(view -> finish());
     }
 
