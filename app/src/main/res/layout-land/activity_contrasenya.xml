@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E7E7">
+
+    <TextView
+        android:id="@+id/tvTituloActualizar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="A C T U A L I Z A R   C O N T R A S E Ñ A"
+        android:textColor="#000000"
+        android:textSize="18dp"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLinea"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="__________________________________________________________________________"
+        android:textColor="#000000"
+        android:textStyle="normal|bold"
+        app:layout_constraintEnd_toEndOf="@+id/tvTituloActualizar"
+        app:layout_constraintStart_toStartOf="@+id/tvTituloActualizar"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloActualizar" />
+
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="248dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="Introduzca usuario"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvLinea" />
+
+    <EditText
+        android:id="@+id/txtContrasenya"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Actualice la contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsuario"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/txtUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+
+    <Button
+        android:id="@+id/bttnActualizarContrasenya"
+        android:layout_width="192dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="#74B529"
+        android:text="Actualizar contraseña"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/txtContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/txtContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasenya" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

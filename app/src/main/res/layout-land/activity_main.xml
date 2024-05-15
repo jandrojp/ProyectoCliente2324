@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E8E7E7"
+    tools:context=".all.activities.MainActivity">
+
+    <ImageView
+        android:id="@+id/ivLogo"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_logo_foreground" />
+
+    <EditText
+        android:id="@+id/txtUsuario"
+        android:layout_width="248dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:ems="10"
+        android:hint="Introduzca usuario"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivLogo"
+        app:layout_constraintTop_toTopOf="@+id/ivLogo" />
+
+    <EditText
+        android:id="@+id/txtContrasenya"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:ems="10"
+        android:hint="Introduzaca contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="@+id/txtUsuario"
+        app:layout_constraintStart_toStartOf="@+id/txtUsuario"
+        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+
+    <Button
+        android:id="@+id/bttnCrearCuenta"
+        android:layout_width="152dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:backgroundTint="#74B529"
+        android:text="Crear cuenta"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/txtContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/txtContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasenya" />
+
+    <Button
+        android:id="@+id/bttnRecordarContrasenya"
+        android:layout_width="248dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#AAA9A9"
+        android:text="Olvidaste la contraseña?"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/bttnCrearCuenta"
+        app:layout_constraintStart_toStartOf="@+id/bttnCrearCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/bttnCrearCuenta" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
