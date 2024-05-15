@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iContenido"
-        android:layout_width="144dp"
-        android:layout_height="144dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -22,11 +22,11 @@
         android:id="@+id/tvNombreContenido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
         android:text="Nombre contenido"
         android:textColor="#000000"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/iContenido"
         app:layout_constraintTop_toTopOf="@+id/iContenido" />
 
@@ -34,10 +34,10 @@
         android:id="@+id/tvValoracion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="16dp"
         android:text="Valoracion"
         android:textColor="#000000"
-        android:textSize="20sp"
+        android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/iContenido"
         app:layout_constraintStart_toStartOf="@+id/tvNombreContenido" />
 
@@ -45,6 +45,7 @@
         android:id="@+id/iEstrella"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvValoracion"
         app:layout_constraintStart_toEndOf="@+id/tvValoracion"
         app:layout_constraintTop_toTopOf="@+id/tvValoracion"

@@ -13,6 +13,7 @@ import com.example.miravereda.API.Connector;
 import com.example.miravereda.activities.model.Root;
 import com.example.miravereda.base.BaseActivity;
 import com.example.miravereda.base.CallInterface;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import es.ieslavereda.miravereda.R;
 
@@ -20,7 +21,7 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
 
     private Root root;
     private RecyclerView recyclerView;
-    private Button botonCarrito;
+    private FloatingActionButton botonCarrito;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

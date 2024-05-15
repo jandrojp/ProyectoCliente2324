@@ -49,7 +49,7 @@ public class DetailsActivity extends AppCompatActivity {
         guardarValoracion.setOnClickListener(view -> {
             auxiliar = 5;
             valoracion.setText(String.valueOf(auxiliar));
-            Toast.makeText(this, "Su valoración ha sido guardada correctamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Su valoración ha sido guardada", Toast.LENGTH_SHORT).show();
         });
 
         adquirir.setOnClickListener(view -> {
