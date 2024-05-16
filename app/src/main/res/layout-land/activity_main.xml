@@ -43,17 +43,33 @@
         app:layout_constraintStart_toStartOf="@+id/txtUsuario"
         app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
 
-    <Button
-        android:id="@+id/bttnCrearCuenta"
-        android:layout_width="152dp"
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:backgroundTint="#74B529"
-        android:text="Crear cuenta"
-        android:textColor="#FFFFFF"
+        android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="@+id/txtContrasenya"
         app:layout_constraintStart_toStartOf="@+id/txtContrasenya"
-        app:layout_constraintTop_toBottomOf="@+id/txtContrasenya" />
+        app:layout_constraintTop_toBottomOf="@+id/txtContrasenya">
+
+        <Button
+            android:id="@+id/bttnIniciarSesion"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#0D90F8"
+            android:text="INICIAR SESIÓN" />
+
+        <Button
+            android:id="@+id/bttnCrearCuenta"
+            android:layout_width="152dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:backgroundTint="#0D90F8"
+            android:text="Registrarse"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/bttnRecordarContrasenya"
@@ -63,8 +79,8 @@
         android:backgroundTint="#AAA9A9"
         android:text="Olvidaste la contraseña?"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/bttnCrearCuenta"
-        app:layout_constraintStart_toStartOf="@+id/bttnCrearCuenta"
-        app:layout_constraintTop_toBottomOf="@+id/bttnCrearCuenta" />
+        app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout2"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

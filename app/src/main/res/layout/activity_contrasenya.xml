@@ -7,12 +7,12 @@
     android:background="#E8E7E7">
 
     <TextView
-        android:id="@+id/tvTituloActualizar"
+        android:id="@+id/tvTituloCuenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
         android:text="A C T U A L I Z A R   C O N T R A S E Ñ A"
-        android:textColor="#000000"
+        android:textColor="#0D90F8"
         android:textSize="18dp"
         android:textStyle="normal|bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -24,11 +24,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="________________________________________________________"
-        android:textColor="#000000"
+        android:textColor="#0D90F8"
         android:textStyle="normal|bold"
-        app:layout_constraintEnd_toEndOf="@+id/tvTituloActualizar"
-        app:layout_constraintStart_toStartOf="@+id/tvTituloActualizar"
-        app:layout_constraintTop_toBottomOf="@+id/tvTituloActualizar" />
+        app:layout_constraintEnd_toEndOf="@+id/tvTituloCuenta"
+        app:layout_constraintStart_toStartOf="@+id/tvTituloCuenta"
+        app:layout_constraintTop_toBottomOf="@+id/tvTituloCuenta" />
 
     <EditText
         android:id="@+id/txtUsuario"

@@ -16,6 +16,7 @@ import es.ieslavereda.miravereda.R;
 public class MainActivity extends AppCompatActivity {
 
     private Button crearCuenta;
+    private Button iniciarSesion;
     private Button recordarContrasenya;
 
     @Override
@@ -28,18 +29,22 @@ public class MainActivity extends AppCompatActivity {
 
         crearCuenta = findViewById(R.id.bttnCrearCuenta);
         recordarContrasenya = findViewById(R.id.bttnRecordarContrasenya);
+        iniciarSesion = findViewById(R.id.bttnIniciarSesion);
 
         recordarContrasenya.setOnClickListener(view -> {
             Intent intent = new Intent(this, ContrasenyaActivity.class);
             startActivity(intent);
         });
 
-        crearCuenta.setOnClickListener(view -> {
+        iniciarSesion.setOnClickListener(view -> {
             Intent intent = new Intent(this, RecyclerActivity.class);
             startActivity(intent);
         });
 
-
+        crearCuenta.setOnClickListener(view -> {
+            Intent intent = new Intent(this, CrearCuentaActivity.class);
+            startActivity(intent);
+        });
     }
 
     @Override

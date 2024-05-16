@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/txtContrasenya">
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/bttnIniciarSesion"
             android:layout_width="152dp"
             android:layout_height="wrap_content"
             android:backgroundTint="#0D90F8"
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="16dp"
             android:backgroundTint="#0D90F8"
-            android:text="Crear cuenta"
+            android:text="Registrarse"
             android:textColor="#FFFFFF" />
 
     </LinearLayout>
