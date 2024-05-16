@@ -1,4 +1,4 @@
-package com.example.miravereda.activities.model.list;
+package com.example.miravereda.activities.model;
 
 import java.io.Serializable;
 import java.sql.Date;
