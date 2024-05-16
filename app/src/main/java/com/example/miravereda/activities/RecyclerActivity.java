@@ -28,8 +28,8 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
-        doInUI();
-        //executeCall(this);
+        showProgress();
+        executeCall(this);
     }
 
     // Realizamos la llamada y recogemos los datos en un objeto Root

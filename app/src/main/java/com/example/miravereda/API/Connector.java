@@ -3,6 +3,7 @@ package com.example.miravereda.API;
 
 import com.example.miravereda.base.Parameters;
 
+import java.sql.SQLOutput;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -34,8 +35,9 @@ public class Connector {
 
 
     public <T> T get(Class<T> clazz){
-        String url = Parameters.URL;
+        String url = Parameters.URL + "peliculas";
         String jsonResponse = callMethodsObject.get(url);
+
         if(jsonResponse != null)
             return conversor.fromJson(jsonResponse, clazz);
         return null;

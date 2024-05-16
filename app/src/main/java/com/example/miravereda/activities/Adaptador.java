@@ -11,7 +11,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.miravereda.activities.model.Pelicula;
 import com.example.miravereda.activities.model.Root;
+
+import java.util.List;
 
 import es.ieslavereda.miravereda.R;
 
@@ -39,7 +42,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        //viewHolder.tvNombreContenido.setText(root.peliculas.get(position).titulo);
+        viewHolder.tvNombreContenido.setText(root.peliculas.get(position).titulo);
         //viewHolder.tvValoracion.setText((int) root.peliculas.get(position).valoracion_media);
 
         viewHolder.itemView.setOnClickListener(view -> {
@@ -47,14 +50,13 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
             intent.putExtra("root", root);
             intent.putExtra("position", position);
 
-
             view.getContext().startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return 12;
+        return root.peliculas.size();
     }
 
 
