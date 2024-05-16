@@ -47,7 +47,7 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
 
     @Override
     public int getItemCount() {
-        return 2;
+        return 0;
     }
 
 
