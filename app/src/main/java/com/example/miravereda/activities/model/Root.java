@@ -9,6 +9,7 @@ import java.util.List;
 
 public class Root implements Serializable {
     public ArrayList<Pelicula> peliculas;
+    public ArrayList<Usuario> usuarios;
 
 }
 

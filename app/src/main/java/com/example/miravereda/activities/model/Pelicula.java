@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.sql.Date;
 
 public class Pelicula implements Serializable {
+
     public int id;
     public String tipo;
     public String titulo;
