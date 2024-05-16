@@ -39,7 +39,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        viewHolder.tvNombreContenido.setText(root.peliculas.get(position).titulo);
+        //viewHolder.tvNombreContenido.setText(root.peliculas.get(position).titulo);
 
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), DetailsActivity.class);
