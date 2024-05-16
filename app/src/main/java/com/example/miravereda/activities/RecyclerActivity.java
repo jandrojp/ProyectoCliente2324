@@ -29,7 +29,7 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
         setContentView(R.layout.activity_recycler);
 
         doInUI();
-        executeCall(this);
+        //executeCall(this);
     }
 
     // Realizamos la llamada y recogemos los datos en un objeto Root
