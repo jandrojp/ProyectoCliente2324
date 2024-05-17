@@ -12,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miravereda.activities.model.Pelicula;
-import com.example.miravereda.activities.model.Root;
 
 import java.util.List;
 
@@ -23,11 +22,11 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
     private LayoutInflater inflater;
     private Context context;
-    private Root root;
+    private List<Pelicula> peliculaList;
 
-    public Adaptador(@NonNull Context context, Root root) {
+    public Adaptador(@NonNull Context context, List<Pelicula> peliculaList) {
         this.context = context;
-        this.root = root;
+        this.peliculaList = peliculaList;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -42,12 +41,12 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        viewHolder.tvNombreContenido.setText(root.peliculas.get(position).titulo);
+        viewHolder.tvNombreContenido.setText(peliculaList.get(position).titulo);
         //viewHolder.tvValoracion.setText((int) root.peliculas.get(position).valoracion_media);
 
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), DetailsActivity.class);
-            intent.putExtra("root", root);
+           // intent.putExtra("root", peliculaList);
             intent.putExtra("position", position);
 
             view.getContext().startActivity(intent);
@@ -56,7 +55,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
     @Override
     public int getItemCount() {
-        return root.peliculas.size();
+        return peliculaList.size();
     }
 
 

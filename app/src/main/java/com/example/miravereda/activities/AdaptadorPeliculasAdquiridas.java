@@ -9,18 +9,22 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-import com.example.miravereda.activities.model.Root;
+
+import com.example.miravereda.activities.model.Pelicula;
+
+import java.util.List;
+
 import es.ieslavereda.miravereda.R;
 
 public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<AdaptadorPeliculasAdquiridas.ViewHolder> {
 
     private LayoutInflater inflater;
     private Context context;
-    private Root root;
+    private List<Pelicula> peliculas;
 
-    public AdaptadorPeliculasAdquiridas(@NonNull Context context, Root root) {
+    public AdaptadorPeliculasAdquiridas(@NonNull Context context, List<Pelicula> peliculas) {
         this.context = context;
-        this.root = root;
+        this.peliculas = peliculas;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
@@ -37,7 +41,7 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
 
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), DetailsActivity.class);
-            intent.putExtra("root", root);
+            //intent.putExtra("root", root);
             intent.putExtra("position", position);
 
 
