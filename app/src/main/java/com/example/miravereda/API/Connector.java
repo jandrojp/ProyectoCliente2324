@@ -26,7 +26,7 @@ public class Connector {
     }
 
     public <T> List<T> getAsList(Class<T> clazz){
-        String url = Parameters.URL;
+        String url = Parameters.URL + "peliculas";
         String jsonResponse = callMethodsObject.get(url);
         if(jsonResponse != null)
             return conversor.fromJsonList(jsonResponse, clazz);
@@ -35,7 +35,7 @@ public class Connector {
 
 
     public <T> T get(Class<T> clazz){
-        String url = Parameters.URL + "peliculas";
+        String url = Parameters.URL;
         String jsonResponse = callMethodsObject.get(url);
 
         if(jsonResponse != null)

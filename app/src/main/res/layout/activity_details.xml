@@ -72,7 +72,7 @@
         android:textColor="#000000"
         android:textSize="14sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvNota"
+        app:layout_constraintBottom_toTopOf="@+id/tvGenero"
         app:layout_constraintStart_toEndOf="@+id/tvPrecio"
         app:layout_constraintTop_toTopOf="@+id/tvPrecio" />
 
@@ -80,13 +80,13 @@
         android:id="@+id/textViewNota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nota:"
+        android:text="Género:"
         android:textColor="#000000"
         app:layout_constraintStart_toStartOf="@+id/textViewPrecio"
         app:layout_constraintTop_toBottomOf="@+id/textViewPrecio" />
 
     <TextView
-        android:id="@+id/tvNota"
+        android:id="@+id/tvGenero"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -107,7 +107,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textViewNota" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/tvNotaMedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -130,7 +130,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNotaMedia" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"

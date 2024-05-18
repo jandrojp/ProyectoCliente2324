@@ -41,12 +41,13 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
+        // Falta imagen
         viewHolder.tvNombreContenido.setText(peliculaList.get(position).titulo);
-        //viewHolder.tvValoracion.setText((int) root.peliculas.get(position).valoracion_media);
+        viewHolder.tvValoracion.setText((int) peliculaList.get(position).valoracion_media);
 
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), DetailsActivity.class);
-           // intent.putExtra("root", peliculaList);
+            intent.putExtra("lista", (CharSequence) peliculaList);
             intent.putExtra("position", position);
 
             view.getContext().startActivity(intent);

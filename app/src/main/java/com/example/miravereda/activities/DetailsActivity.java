@@ -7,7 +7,10 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.miravereda.activities.model.Pelicula;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 import es.ieslavereda.miravereda.R;
 
@@ -19,6 +22,11 @@ public class DetailsActivity extends AppCompatActivity {
     private double auxiliar;
     private FloatingActionButton guardarValoracion;
     private Button adquirir;
+    private TextView titulo;
+    private TextView autor;
+    private TextView precio;
+    private TextView genero;
+    private TextView notaMedia;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +39,25 @@ public class DetailsActivity extends AppCompatActivity {
         auxiliar = 5;
         guardarValoracion = findViewById(R.id.fabGuardar);
         adquirir = findViewById(R.id.bttnAdquirir);
+
+        titulo = findViewById(R.id.tvTitulo);
+        autor = findViewById(R.id.tvAutor);
+        precio = findViewById(R.id.tvPrecio);
+        genero = findViewById(R.id.tvGenero);
+        notaMedia = findViewById(R.id.tvNotaMedia);
+
+        List<Pelicula> peliculaList = (List<Pelicula>) getIntent().getExtras().get("lista");
+        int position = (int) getIntent().getExtras().get("position");
+
+        // Falta imagen
+        titulo.setText(peliculaList.get(position).titulo);
+        autor.setText(peliculaList.get(position).director);
+        //precio.setText(peliculaList.get(position).precio);
+        genero.setText(peliculaList.get(position).genero);
+        notaMedia = findViewById((int) peliculaList.get(position).valoracion_media);
+
+
+
 
         btnRestar.setOnClickListener(view -> {
             if (auxiliar > 0) {
