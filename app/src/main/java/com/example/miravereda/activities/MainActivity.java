@@ -5,19 +5,29 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
-import androidx.appcompat.app.AppCompatActivity;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.miravereda.API.Connector;
+import com.example.miravereda.activities.model.Usuario;
 import com.example.miravereda.activities.preferencias.IdiomSetUp;
 import com.example.miravereda.activities.preferencias.PreferenciasActivity;
 import com.example.miravereda.activities.preferencias.ThemeSetup;
+import com.example.miravereda.base.BaseActivity;
+import com.example.miravereda.base.CallInterface;
+
+import java.util.List;
 
 import es.ieslavereda.miravereda.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
 
     private Button crearCuenta;
     private Button iniciarSesion;
     private Button recordarContrasenya;
+    private EditText usuarioTxt;
+    private EditText contrasenyaTxt;
+    private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,16 +40,53 @@ public class MainActivity extends AppCompatActivity {
         crearCuenta = findViewById(R.id.bttnCrearCuenta);
         recordarContrasenya = findViewById(R.id.bttnRecordarContrasenya);
         iniciarSesion = findViewById(R.id.bttnIniciarSesion);
+        usuarioTxt = findViewById(R.id.txtUser);
+        contrasenyaTxt = findViewById(R.id.txtPassword);
 
         recordarContrasenya.setOnClickListener(view -> {
             Intent intent = new Intent(this, ContrasenyaActivity.class);
             startActivity(intent);
         });
 
+        /*
         iniciarSesion.setOnClickListener(view -> {
             Intent intent = new Intent(this, RecyclerActivity.class);
             startActivity(intent);
         });
+
+         */
+
+
+        iniciarSesion.setOnClickListener(
+                v -> {
+                    showProgress();
+                    executeCall(new CallInterface() {
+
+                        @Override
+                        public void doInBackground() {
+                           usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
+                        }
+
+                        @Override
+                        public void doInUI() {
+                            hideProgress();
+
+                            String usuario = usuarioTxt.getText().toString();
+                            String contrasenya = contrasenyaTxt.getText().toString();
+
+                            for (Usuario u : usuarios) {
+                                if (u.usuario.equals(usuario) && u.contrasenya.equals(contrasenya)) {
+                                    Intent i = new Intent(getApplicationContext(), RecyclerActivity.class);
+                                    startActivity(i);
+                                }
+                            }
+
+                            Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                        }
+                    });
+                }
+        );
+
 
         crearCuenta.setOnClickListener(view -> {
             Intent intent = new Intent(this, CrearCuentaActivity.class);

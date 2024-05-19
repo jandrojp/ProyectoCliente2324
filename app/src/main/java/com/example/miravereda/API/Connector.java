@@ -34,8 +34,8 @@ public class Connector {
     }
 
 
-    public <T> T get(Class<T> clazz){
-        String url = Parameters.URL;
+    public <T> T get(Class<T> clazz, String path){
+        String url = Parameters.URL + path;
         String jsonResponse = callMethodsObject.get(url);
 
         if(jsonResponse != null)
@@ -53,7 +53,7 @@ public class Connector {
         return null;
     }
 
-    public <T> T put(Class<T> clazz, T data, String path){
+    public <T> T put(Class<T> clazz, String data, String path){
         String url = Parameters.URL + path;
         String jsonObject = conversor.toJson(data);
         RequestBody body = RequestBody.create(MediaType.parse("application/json"), jsonObject);

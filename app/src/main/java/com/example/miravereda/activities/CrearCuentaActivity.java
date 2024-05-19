@@ -28,6 +28,7 @@ public class CrearCuentaActivity extends BaseActivity {
     private EditText etUsuario;
     private EditText etContrasenya;
     private Button crearCuenta;
+    private List<Usuario> usuarios;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,22 +74,10 @@ public class CrearCuentaActivity extends BaseActivity {
                     showProgress();
                     executeCall(new CallInterface() {
 
-                        Usuario u;
-
                         @Override
                         public void doInBackground() {
-                            String nombre = etNombre.getText().toString();
-                            String apellidos = etApellidos.getText().toString();
-                            String dni = etDNI.getText().toString();
-                            String email = etEmail.getText().toString();
-                            String domicilio = etDomicilio.getText().toString();
-                            String cp = etCP.getText().toString();
-                            String fechaNacimiento = etFechaNacimiento.getText().toString();
-                            String tarjetaCredito = etTarjeta.getText().toString();
-                            String usuario = etUsuario.getText().toString();
-                            String contrasenya = etContrasenya.getText().toString();
 
-                            List<Usuario> usuarios = Connector.getConector().getAsList(Usuario.class, "usuarios");
+                            usuarios = Connector.getConector().getAsList(Usuario.class, "usuarios");
 
 
                             /*
@@ -101,6 +90,20 @@ public class CrearCuentaActivity extends BaseActivity {
                         @Override
                         public void doInUI() {
                             hideProgress();
+
+                            String nombre = etNombre.getText().toString();
+                            String apellidos = etApellidos.getText().toString();
+                            String dni = etDNI.getText().toString();
+                            String email = etEmail.getText().toString();
+                            String domicilio = etDomicilio.getText().toString();
+                            String cp = etCP.getText().toString();
+                            String fechaNacimiento = etFechaNacimiento.getText().toString();
+                            String tarjetaCredito = etTarjeta.getText().toString();
+                            String usuario = etUsuario.getText().toString();
+                            String contrasenya = etContrasenya.getText().toString();
+
+
+
                             if (u != null) {
                                 Intent i = new Intent(getApplicationContext(), MainActivity.class);
                                 setResult(RESULT_OK);

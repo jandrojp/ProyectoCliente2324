@@ -31,7 +31,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTituloCuenta" />
 
     <EditText
-        android:id="@+id/txtUsuario"
+        android:id="@+id/txtUser"
         android:layout_width="248dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
@@ -44,17 +44,17 @@
         app:layout_constraintTop_toBottomOf="@+id/tvLinea" />
 
     <EditText
-        android:id="@+id/txtContrasenya"
+        android:id="@+id/txtPassword"
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:hint="Actualice la contraseña"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/txtUsuario"
+        app:layout_constraintEnd_toEndOf="@+id/txtUser"
         app:layout_constraintHorizontal_bias="0.529"
-        app:layout_constraintStart_toStartOf="@+id/txtUsuario"
-        app:layout_constraintTop_toBottomOf="@+id/txtUsuario" />
+        app:layout_constraintStart_toStartOf="@+id/txtUser"
+        app:layout_constraintTop_toBottomOf="@+id/txtUser" />
 
     <Button
         android:id="@+id/bttnActualizarContrasenya"
@@ -64,8 +64,8 @@
         android:backgroundTint="#0D90F8"
         android:text="Actualizar contraseña"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="@+id/txtContrasenya"
-        app:layout_constraintStart_toStartOf="@+id/txtContrasenya"
-        app:layout_constraintTop_toBottomOf="@+id/txtContrasenya" />
+        app:layout_constraintEnd_toEndOf="@+id/txtPassword"
+        app:layout_constraintStart_toStartOf="@+id/txtPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
