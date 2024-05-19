@@ -36,7 +36,7 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
     // Realizamos la llamada y recogemos los datos en un objeto Root
     @Override
     public void doInBackground() {
-        peliculas = Connector.getConector().getAsList(Pelicula.class);
+        peliculas = Connector.getConector().getAsList(Pelicula.class, "peliculas");
     }
 
     // Una vez ya se ha realizado la llamada, ocultamos la barra de progreso y presentamos los datos
