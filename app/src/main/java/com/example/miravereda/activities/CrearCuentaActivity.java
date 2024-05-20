@@ -47,27 +47,41 @@ public class CrearCuentaActivity extends BaseActivity {
         etContrasenya = findViewById(R.id.etContrasenya);
         crearCuenta = findViewById(R.id.bttnCrear);
 
-        String nombre = etNombre.getText().toString();
-        String apellidos = etApellidos.getText().toString();
-        String dni = etDNI.getText().toString();
-        String email = etEmail.getText().toString();
-        String domicilio = etDomicilio.getText().toString();
-        String cp = etCP.getText().toString();
-        String fechaNacimiento = etFechaNacimiento.getText().toString();
-        String tarjetaCredito = etTarjeta.getText().toString();
-        String usuario = etUsuario.getText().toString();
-        String contrasenya = etContrasenya.getText().toString();
-
         crearCuenta.setOnClickListener(
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
 
-                        Usuario nuevoUsuario = null;
-
                         @Override
                         public void doInBackground() {
                             usuarios = Connector.getConector().getAsList(Usuario.class, "usuarios");
+                            String nuevoDni = etDNI.getText().toString();
+                            String nuevoUsuario = etUsuario.getText().toString();
+                            long resultado = 1;
+
+                            if (!etDNI.getText().toString().isEmpty() && !etUsuario.getText().toString().isEmpty()
+                                    && !etContrasenya.getText().toString().isEmpty()) {
+                                resultado = usuarios.stream().filter(usu -> usu.dni.equals(nuevoDni) || usu.usuario.equals(nuevoUsuario)).count();
+                            }
+
+                            if (resultado == 0) {
+
+                                Usuario u = new Usuario(nuevoDni,
+                                        nuevoUsuario,
+                                        etContrasenya.getText().toString(),
+                                        etNombre.getText().toString(),
+                                        etApellidos.getText().toString(),
+                                        etEmail.getText().toString(),
+                                        etDomicilio.getText().toString(),
+                                        etCP.getText().toString(),
+                                        etFechaNacimiento.getText().toString(),
+                                        etTarjeta.getText().toString());
+
+                                u = Connector.getConector().post(Usuario.class, u, "usuarios");
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();;
+                            }
 
                         }
 
@@ -75,20 +89,8 @@ public class CrearCuentaActivity extends BaseActivity {
                         public void doInUI() {
                             hideProgress();
 
-                            boolean anyadido = false;
-
-                            for (Usuario u : usuarios) {
-
-                                if (dni.isEmpty() || usuario.isEmpty() || contrasenya.isEmpty() ||
-                                u.dni.equals(dni) || u.usuario.equals(usuario)) {
-
-                                }
-                            }
-
-                            if (!anyadido) {
-                                Toast.makeText(getApplicationContext(), "ERROR. Algo ha ido mal", Toast.LENGTH_SHORT).show()
-                            }
-
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
                         }
                     });
                 }
