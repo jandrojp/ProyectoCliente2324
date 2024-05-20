@@ -42,27 +42,21 @@ public class ContrasenyaActivity extends BaseActivity {
                         @Override
                         public void doInBackground() {
                             usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
+                            String user = usuarioActualizar.getText().toString();
+                            String pass = nuevaContrasenya.getText().toString();
+                            long resultado = 1;
+
+                            if (!user.isEmpty() && !pass.isEmpty()) {
+                              //  resultado = usuarios.stream().filter(usu -> usu.dni.equals(user) || usu.usuario.equals(nuevoUsuario)).count();
+                            }
                         }
 
                         @Override
                         public void doInUI() {
                             hideProgress();
 
-                            String usuario = usuarioActualizar.getText().toString();
-                            String contrasenya = nuevaContrasenya.getText().toString();
-
-                            for (Usuario u : usuarios) {
-                                if (u.usuario.equals(usuario) && !(contrasenya.isEmpty())) {
-
-                                    Usuario user = Connector.getConector().get(Usuario.class, "usuarios/" + u.dni);
-                                    user = Connector.getConector().put(Usuario.class, "", "usuarios");
-
-                                    Intent i = new Intent(getApplicationContext(), RecyclerActivity.class);
-                                    startActivity(i);
-                                }
-                            }
-
-                            Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
                         }
                     });
                 }

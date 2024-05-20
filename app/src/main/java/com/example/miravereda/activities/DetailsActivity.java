@@ -53,7 +53,7 @@ public class DetailsActivity extends AppCompatActivity {
         // Falta imagen
         titulo.setText(p.titulo);
         autor.setText(p.director);
-        //precio.setText(p.precio);
+        precio.setText(String.valueOf(p.preciovisionado));
         genero.setText(p.genero);
         notaMedia.setText(String.valueOf(p.valoracion_media));
 
