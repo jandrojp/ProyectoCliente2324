@@ -48,15 +48,16 @@ public class MainActivity extends BaseActivity {
             startActivity(intent);
         });
 
-        /*
+
         iniciarSesion.setOnClickListener(view -> {
             Intent intent = new Intent(this, RecyclerActivity.class);
             startActivity(intent);
         });
 
-         */
 
 
+
+        /*
         iniciarSesion.setOnClickListener(
                 v -> {
                     showProgress();
@@ -86,6 +87,8 @@ public class MainActivity extends BaseActivity {
                     });
                 }
         );
+
+         */
 
 
         crearCuenta.setOnClickListener(view -> {

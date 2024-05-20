@@ -102,15 +102,6 @@ public class CrearCuentaActivity extends BaseActivity {
                             String usuario = etUsuario.getText().toString();
                             String contrasenya = etContrasenya.getText().toString();
 
-
-
-                            if (u != null) {
-                                Intent i = new Intent(getApplicationContext(), MainActivity.class);
-                                setResult(RESULT_OK);
-                                finish();
-
-                            } else
-                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
