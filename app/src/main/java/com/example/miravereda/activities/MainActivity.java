@@ -49,15 +49,6 @@ public class MainActivity extends BaseActivity {
         });
 
 
-        iniciarSesion.setOnClickListener(view -> {
-            Intent intent = new Intent(this, RecyclerActivity.class);
-            startActivity(intent);
-        });
-
-
-
-
-        /*
         iniciarSesion.setOnClickListener(
                 v -> {
                     showProgress();
@@ -74,21 +65,26 @@ public class MainActivity extends BaseActivity {
 
                             String usuario = usuarioTxt.getText().toString();
                             String contrasenya = contrasenyaTxt.getText().toString();
+                            boolean encontrado = false;
 
                             for (Usuario u : usuarios) {
                                 if (u.usuario.equals(usuario) && u.contrasenya.equals(contrasenya)) {
+                                    encontrado = true;
                                     Intent i = new Intent(getApplicationContext(), RecyclerActivity.class);
                                     startActivity(i);
                                 }
                             }
 
-                            Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                            if (!encontrado) Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+
                         }
                     });
                 }
         );
 
-         */
+
+
+
 
 
         crearCuenta.setOnClickListener(view -> {

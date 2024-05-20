@@ -47,60 +47,47 @@ public class CrearCuentaActivity extends BaseActivity {
         etContrasenya = findViewById(R.id.etContrasenya);
         crearCuenta = findViewById(R.id.bttnCrear);
 
-        crearCuenta.setOnClickListener(view -> {
-
-            if (etNombre.getText().toString().isEmpty() ||
-                    etApellidos.getText().toString().isEmpty() ||
-                    etDNI.getText().toString().isEmpty() ||
-                    etEmail.getText().toString().isEmpty() ||
-                    etDomicilio.getText().toString().isEmpty() ||
-                    etCP.getText().toString().isEmpty() ||
-                    etFechaNacimiento.getText().toString().isEmpty() ||
-                    etTarjeta.getText().toString().isEmpty() ||
-                    etUsuario.getText().toString().isEmpty() ||
-                    etContrasenya.getText().toString().isEmpty() ||
-                    crearCuenta.getText().toString().isEmpty()) {
-
-                Toast.makeText(this, "Rellena todos los campos", Toast.LENGTH_SHORT).show();
-            } else {
-                finish();
-            }
-        } );
-
-
+        String nombre = etNombre.getText().toString();
+        String apellidos = etApellidos.getText().toString();
+        String dni = etDNI.getText().toString();
+        String email = etEmail.getText().toString();
+        String domicilio = etDomicilio.getText().toString();
+        String cp = etCP.getText().toString();
+        String fechaNacimiento = etFechaNacimiento.getText().toString();
+        String tarjetaCredito = etTarjeta.getText().toString();
+        String usuario = etUsuario.getText().toString();
+        String contrasenya = etContrasenya.getText().toString();
 
         crearCuenta.setOnClickListener(
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
 
+                        Usuario nuevoUsuario = null;
+
                         @Override
                         public void doInBackground() {
-
                             usuarios = Connector.getConector().getAsList(Usuario.class, "usuarios");
 
-
-                            /*
-                            u = new Usuario(dni, usuario, contrasenya, nombre, apellidos, email, domicilio, cp, fechaNacimiento, tarjetaCredito);
-                            u = Model.getInstance(getApplicationContext()).insertUsuario(u);
-
-                             */
                         }
 
                         @Override
                         public void doInUI() {
                             hideProgress();
 
-                            String nombre = etNombre.getText().toString();
-                            String apellidos = etApellidos.getText().toString();
-                            String dni = etDNI.getText().toString();
-                            String email = etEmail.getText().toString();
-                            String domicilio = etDomicilio.getText().toString();
-                            String cp = etCP.getText().toString();
-                            String fechaNacimiento = etFechaNacimiento.getText().toString();
-                            String tarjetaCredito = etTarjeta.getText().toString();
-                            String usuario = etUsuario.getText().toString();
-                            String contrasenya = etContrasenya.getText().toString();
+                            boolean anyadido = false;
+
+                            for (Usuario u : usuarios) {
+
+                                if (dni.isEmpty() || usuario.isEmpty() || contrasenya.isEmpty() ||
+                                u.dni.equals(dni) || u.usuario.equals(usuario)) {
+
+                                }
+                            }
+
+                            if (!anyadido) {
+                                Toast.makeText(getApplicationContext(), "ERROR. Algo ha ido mal", Toast.LENGTH_SHORT).show()
+                            }
 
                         }
                     });

@@ -46,15 +46,16 @@ public class DetailsActivity extends AppCompatActivity {
         genero = findViewById(R.id.tvGenero);
         notaMedia = findViewById(R.id.tvNotaMedia);
 
-        List<Pelicula> peliculaList = (List<Pelicula>) getIntent().getExtras().get("lista");
+
+        Pelicula p = (Pelicula) getIntent().getExtras().get("lista");
         int position = (int) getIntent().getExtras().get("position");
 
         // Falta imagen
-        titulo.setText(peliculaList.get(position).titulo);
-        autor.setText(peliculaList.get(position).director);
-        //precio.setText(peliculaList.get(position).precio);
-        genero.setText(peliculaList.get(position).genero);
-        notaMedia.setText((int) peliculaList.get(position).valoracion_media);
+        titulo.setText(p.titulo);
+        autor.setText(p.director);
+        //precio.setText(p.precio);
+        genero.setText(p.genero);
+        notaMedia.setText(String.valueOf(p.valoracion_media));
 
 
 
