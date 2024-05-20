@@ -54,7 +54,7 @@ public class DetailsActivity extends AppCompatActivity {
         autor.setText(peliculaList.get(position).director);
         //precio.setText(peliculaList.get(position).precio);
         genero.setText(peliculaList.get(position).genero);
-        notaMedia = findViewById((int) peliculaList.get(position).valoracion_media);
+        notaMedia.setText((int) peliculaList.get(position).valoracion_media);
 
 
 
