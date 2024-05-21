@@ -53,32 +53,31 @@ public class MainActivity extends BaseActivity {
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
+                        long resultado = 0;
 
                         @Override
                         public void doInBackground() {
-                           usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
+                            usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
+
+                            String usuario = usuarioTxt.getText().toString();
+                            String contrasenya = contrasenyaTxt.getText().toString();
+
+                            if (!usuarioTxt.getText().toString().isEmpty() && !contrasenyaTxt.getText().toString().isEmpty()) {
+                                resultado = usuarios.stream().filter(usu -> usu.usuario.equals(usuario) && usu.contrasenya.equals(contrasenya)).count();
+                            }
+
                         }
 
                         @Override
                         public void doInUI() {
                             hideProgress();
 
-                            String usuario = usuarioTxt.getText().toString();
-                            String contrasenya = contrasenyaTxt.getText().toString();
-                            boolean encontrado = false;
+                            if (resultado == 1) {
+                                Intent intent = new Intent(getApplicationContext(), RecyclerActivity.class);
+                                startActivity(intent);
 
-                            for (Usuario u : usuarios) {
-                                if (u.usuario.equals(usuario) && u.contrasenya.equals(contrasenya)) {
-                                    encontrado = true;
-
-                                }
-                            }
-
-                            if (!encontrado) {
-                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
                             } else {
-                                Intent i = new Intent(getApplicationContext(), RecyclerActivity.class);
-                                startActivity(i);
+                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
                             }
 
                         }
