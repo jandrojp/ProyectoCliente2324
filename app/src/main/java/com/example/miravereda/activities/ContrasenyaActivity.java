@@ -38,16 +38,36 @@ public class ContrasenyaActivity extends BaseActivity {
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
+                        Usuario u = null;
 
                         @Override
                         public void doInBackground() {
                             usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
                             String user = usuarioActualizar.getText().toString();
                             String pass = nuevaContrasenya.getText().toString();
-                            long resultado = 1;
+
 
                             if (!user.isEmpty() && !pass.isEmpty()) {
-                              //  resultado = usuarios.stream().filter(usu -> usu.dni.equals(user) || usu.usuario.equals(nuevoUsuario)).count();
+
+
+                                for (Usuario us : usuarios) {
+                                    if (us.usuario.equals(user)) {
+                                        u = new Usuario(us.dni,
+                                                us.usuario,
+                                                pass,
+                                                us.nombre,
+                                                us.apellidos,
+                                                us.email,
+                                                us.domicilio,
+                                                us.codigo_postal,
+                                                us.fecha_nacimiento,
+                                                us.tarjeta_credito);
+                                    }
+                                }
+                            }
+
+                            if (u != null) {
+                                u = Connector.getConector().put(Usuario.class, u, "usuarios");
                             }
                         }
 
@@ -55,8 +75,14 @@ public class ContrasenyaActivity extends BaseActivity {
                         public void doInUI() {
                             hideProgress();
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+                            if (u != null) {
+                                Toast.makeText(getApplicationContext(), "Tu contraseña ha sido actualizada", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                            }
                         }
                     });
                 }

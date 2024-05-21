@@ -18,4 +18,5 @@ public class Pelicula implements Serializable {
     public int duracion;
     public double valoracion_media;
     public double preciovisionado;
+    public String portada;
 }

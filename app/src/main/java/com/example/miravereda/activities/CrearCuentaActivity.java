@@ -51,13 +51,14 @@ public class CrearCuentaActivity extends BaseActivity {
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
+                        long resultado = 1;
 
                         @Override
                         public void doInBackground() {
                             usuarios = Connector.getConector().getAsList(Usuario.class, "usuarios");
                             String nuevoDni = etDNI.getText().toString();
                             String nuevoUsuario = etUsuario.getText().toString();
-                            long resultado = 1;
+
 
                             if (!etDNI.getText().toString().isEmpty() && !etUsuario.getText().toString().isEmpty()
                                     && !etContrasenya.getText().toString().isEmpty()) {
@@ -79,8 +80,6 @@ public class CrearCuentaActivity extends BaseActivity {
 
                                 u = Connector.getConector().post(Usuario.class, u, "usuarios");
 
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();;
                             }
 
                         }
@@ -89,8 +88,15 @@ public class CrearCuentaActivity extends BaseActivity {
                         public void doInUI() {
                             hideProgress();
 
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+                            if (resultado == 0) {
+                                Toast.makeText(getApplicationContext(), "Enhorabuena, su usuario ha sido creado", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                            }
+
                         }
                     });
                 }

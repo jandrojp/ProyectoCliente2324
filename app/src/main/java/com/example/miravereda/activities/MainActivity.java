@@ -70,12 +70,16 @@ public class MainActivity extends BaseActivity {
                             for (Usuario u : usuarios) {
                                 if (u.usuario.equals(usuario) && u.contrasenya.equals(contrasenya)) {
                                     encontrado = true;
-                                    Intent i = new Intent(getApplicationContext(), RecyclerActivity.class);
-                                    startActivity(i);
+
                                 }
                             }
 
-                            if (!encontrado) Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                            if (!encontrado) {
+                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
+                            } else {
+                                Intent i = new Intent(getApplicationContext(), RecyclerActivity.class);
+                                startActivity(i);
+                            }
 
                         }
                     });

@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miravereda.activities.model.Pelicula;
+import com.example.miravereda.base.ImageDownloader;
+import com.example.miravereda.base.Parameters;
 
 import java.util.List;
 
@@ -43,6 +45,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
         viewHolder.tvNombreContenido.setText(peliculaList.get(position).titulo);
         viewHolder.tvValoracion.setText(String.valueOf(peliculaList.get(position).valoracion_media));
+        ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + peliculaList.get(position).portada, viewHolder.iContenido);
 
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), DetailsActivity.class);

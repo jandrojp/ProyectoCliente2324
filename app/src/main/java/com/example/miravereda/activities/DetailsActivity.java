@@ -2,12 +2,15 @@ package com.example.miravereda.activities;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.miravereda.activities.model.Pelicula;
+import com.example.miravereda.base.ImageDownloader;
+import com.example.miravereda.base.Parameters;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -16,6 +19,7 @@ import es.ieslavereda.miravereda.R;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    private ImageView image;
     private Button btnRestar;
     private Button btnSumar;
     private TextView valoracion;
@@ -39,6 +43,7 @@ public class DetailsActivity extends AppCompatActivity {
         auxiliar = 5;
         guardarValoracion = findViewById(R.id.fabGuardar);
         adquirir = findViewById(R.id.bttnAdquirir);
+        image = findViewById(R.id.iContenidoDetalle);
 
         titulo = findViewById(R.id.tvTitulo);
         autor = findViewById(R.id.tvAutor);
@@ -48,12 +53,12 @@ public class DetailsActivity extends AppCompatActivity {
 
 
         Pelicula p = (Pelicula) getIntent().getExtras().get("lista");
-        int position = (int) getIntent().getExtras().get("position");
 
-        // Falta imagen
+
+        ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + p.portada, image);
         titulo.setText(p.titulo);
         autor.setText(p.director);
-        precio.setText(String.valueOf(p.preciovisionado));
+        precio.setText(String.valueOf((int)p.preciovisionado));
         genero.setText(p.genero);
         notaMedia.setText(String.valueOf(p.valoracion_media));
 
