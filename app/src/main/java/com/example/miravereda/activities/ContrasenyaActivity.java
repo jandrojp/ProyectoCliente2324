@@ -15,6 +15,7 @@ import com.example.miravereda.base.BaseActivity;
 import com.example.miravereda.base.CallInterface;
 
 import java.util.List;
+import java.util.Optional;
 
 import es.ieslavereda.miravereda.R;;
 
@@ -38,7 +39,7 @@ public class ContrasenyaActivity extends BaseActivity {
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
-                        Usuario u = null;
+                        int result = 0;
 
                         @Override
                         public void doInBackground() {
@@ -46,36 +47,36 @@ public class ContrasenyaActivity extends BaseActivity {
                             String user = usuarioActualizar.getText().toString();
                             String pass = nuevaContrasenya.getText().toString();
 
+                            if (!usuarioActualizar.getText().toString().isEmpty() && !nuevaContrasenya.getText().toString().isEmpty()) {
+                                Optional<Usuario> optional = usuarios.stream().filter(usu -> usu.usuario.equals(user)).findFirst();
 
-                            if (!user.isEmpty() && !pass.isEmpty()) {
+                                if (optional.isPresent()) {
+                                    Usuario usuarioSeleccionado = optional.get();
 
+                                    Usuario u = new Usuario(usuarioSeleccionado.dni,
+                                            usuarioSeleccionado.usuario,
+                                            pass,
+                                            usuarioSeleccionado.nombre,
+                                            usuarioSeleccionado.apellidos,
+                                            usuarioSeleccionado.email,
+                                            usuarioSeleccionado.domicilio,
+                                            usuarioSeleccionado.codigo_postal,
+                                            usuarioSeleccionado.fecha_nacimiento,
+                                            usuarioSeleccionado.tarjeta_credito);
 
-                                for (Usuario us : usuarios) {
-                                    if (us.usuario.equals(user)) {
-                                        u = new Usuario(us.dni,
-                                                us.usuario,
-                                                pass,
-                                                us.nombre,
-                                                us.apellidos,
-                                                us.email,
-                                                us.domicilio,
-                                                us.codigo_postal,
-                                                us.fecha_nacimiento,
-                                                us.tarjeta_credito);
-                                    }
+                                    u = Connector.getConector().put(Usuario.class, u, "usuarios");
+                                    result = 1;
                                 }
+
                             }
 
-                            if (u != null) {
-                                u = Connector.getConector().put(Usuario.class, u, "usuarios");
-                            }
                         }
 
                         @Override
                         public void doInUI() {
                             hideProgress();
 
-                            if (u != null) {
+                            if (result == 1) {
                                 Toast.makeText(getApplicationContext(), "Tu contraseña ha sido actualizada", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
