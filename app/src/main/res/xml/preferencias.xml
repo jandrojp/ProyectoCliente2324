@@ -10,14 +10,37 @@
             android:summary="Español"
             android:title="Lenguaje" />
 
-        <PreferenceCategory android:title="Pantalla">
             <androidx.preference.ListPreference
                 android:dialogTitle="@string/settings_theme_dialog_title"
                 android:entries="@array/settings_theme_entries"
                 android:entryValues="@array/settings_theme_values"
                 android:key="@string/settings_theme_key"
                 android:title="@string/settings_theme_title" />
-        </PreferenceCategory>
-
     </PreferenceCategory>
+
+
+        <PreferenceCategory android:title="Base de datos">
+
+            <EditTextPreference
+                android:defaultValue="172.30.198.217"
+                android:key="etpIP"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:title="IP"
+                app:summary="Direccion IP del SGBD" />
+            <EditTextPreference
+                android:defaultValue="8080"
+                android:key="etpPort"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:title="Puerto"
+                app:summary="Puerto de acceso" />
+            <EditTextPreference
+                android:defaultValue="java"
+                android:key="etpSchema"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:title="Schema"
+                app:summary="Schema de la BBDD" />
+        </PreferenceCategory>
 </androidx.preference.PreferenceScreen>

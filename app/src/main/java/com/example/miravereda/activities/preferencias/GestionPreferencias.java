@@ -27,9 +27,20 @@ public class GestionPreferencias {
             pref = PreferenceManager.getDefaultSharedPreferences(context);
     }
 
-    public String getUnidades(Context context){
+    public String getIP(Context context){
         inicializa(context);
-        return pref.getString("unidades","standard");
+        return pref.getString("etpIP","172.30.198.217");
+    }
+
+    public String getPort(Context context){
+        inicializa(context);
+        return pref.getString("etpPort","8080");
+    }
+
+
+    public String getSchema(Context context){
+        inicializa(context);
+        return pref.getString("etpSchema","java");
     }
 
     public String getIdiom(Context context){

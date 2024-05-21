@@ -17,10 +17,6 @@ public class PreferenciasFragment extends PreferenceFragmentCompat {
 
         setPreferencesFromResource(R.xml.preferencias, rootKey);
 
-
-
-
-
         ListPreference idiomPreference = getPreferenceManager().findPreference("lenguaje");
         final List<String> idiom_entries = Arrays.asList(getResources().getStringArray(R.array.idiom_entries));
         final List<String> idiom_values = Arrays.asList(getResources().getStringArray(R.array.idiom_values));
