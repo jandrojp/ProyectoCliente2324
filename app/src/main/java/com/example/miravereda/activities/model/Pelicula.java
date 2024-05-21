@@ -19,4 +19,19 @@ public class Pelicula implements Serializable {
     public double valoracion_media;
     public double preciovisionado;
     public String portada;
+
+    public Pelicula(int id, String tipo, String titulo, String idioma, String genero, String descripcion, String director, String actores, int duracion, double valoracion_media, double preciovisionado, String portada) {
+        this.id = id;
+        this.tipo = tipo;
+        this.titulo = titulo;
+        this.idioma = idioma;
+        this.genero = genero;
+        this.descripcion = descripcion;
+        this.director = director;
+        this.actores = actores;
+        this.duracion = duracion;
+        this.valoracion_media = valoracion_media;
+        this.preciovisionado = preciovisionado;
+        this.portada = portada;
+    }
 }

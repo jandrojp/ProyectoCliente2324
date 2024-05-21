@@ -87,51 +87,34 @@ public class DetailsActivity extends BaseActivity {
                 v -> {
                     showProgress();
                     executeCall(new CallInterface() {
-                        auxiliar = 5;
 
                         @Override
                         public void doInBackground() {
-                            usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
-                            String user = usuarioActualizar.getText().toString();
-                            String pass = nuevaContrasenya.getText().toString();
 
-                            if (!usuarioActualizar.getText().toString().isEmpty() && !nuevaContrasenya.getText().toString().isEmpty()) {
-                                Optional<Usuario> optional = usuarios.stream().filter(usu -> usu.usuario.equals(user)).findFirst();
+                            double valoracionGuardada = Double.parseDouble(valoracion.getText().toString());
 
-                                if (optional.isPresent()) {
-                                    Usuario usuarioSeleccionado = optional.get();
+                            Pelicula pelicula = new Pelicula(p.id,
+                                    p.tipo,
+                                    p.titulo,
+                                    p.idioma,
+                                    p.genero,
+                                    p.descripcion,
+                                    p.director,
+                                    p.actores,
+                                    p.duracion,
+                                    (valoracionGuardada + p.valoracion_media) / 2,
+                                    p.preciovisionado,
+                                    p.portada);
 
-                                    Usuario u = new Usuario(usuarioSeleccionado.dni,
-                                            usuarioSeleccionado.usuario,
-                                            pass,
-                                            usuarioSeleccionado.nombre,
-                                            usuarioSeleccionado.apellidos,
-                                            usuarioSeleccionado.email,
-                                            usuarioSeleccionado.domicilio,
-                                            usuarioSeleccionado.codigo_postal,
-                                            usuarioSeleccionado.fecha_nacimiento,
-                                            usuarioSeleccionado.tarjeta_credito);
-
-                                    u = Connector.getConector().put(Usuario.class, u, "usuarios");
-                                    result = 1;
-                                }
-
-                            }
+                            pelicula = Connector.getConector().put(Pelicula.class, pelicula, "peliculas");
 
                         }
 
                         @Override
                         public void doInUI() {
                             hideProgress();
-
-                            if (result == 1) {
-                                Toast.makeText(getApplicationContext(), "Tu contraseña ha sido actualizada", Toast.LENGTH_LONG).show();
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
-
-                            } else {
-                                Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
-                            }
+                            auxiliar = 5;
+                            Toast.makeText(getApplicationContext(), "Su valoración ha sido guardada", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
