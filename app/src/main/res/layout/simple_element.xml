@@ -46,7 +46,6 @@
         android:id="@+id/iEstrella"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@+id/tvValoracion"
         app:layout_constraintStart_toEndOf="@+id/tvValoracion"
         app:layout_constraintTop_toTopOf="@+id/tvValoracion"
