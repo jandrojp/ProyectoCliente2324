@@ -131,8 +131,12 @@ public class DetailsActivity extends BaseActivity {
         });
 
         adquirir.setOnClickListener(view -> {
+
             Toast.makeText(this, "Se ha añadido correctamente a la cesta", Toast.LENGTH_SHORT).show();
-            finish();
+            Intent intent = new Intent(this, CestaActivity.class);
+            intent.putExtra("pelicula", p);
+            startActivity(intent);
+
         });
     }
 }

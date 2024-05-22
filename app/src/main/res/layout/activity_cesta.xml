@@ -9,6 +9,7 @@
         android:id="@+id/recyclerPeliculasAdquiridas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#E8E7E7"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 

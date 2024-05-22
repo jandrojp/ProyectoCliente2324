@@ -1,6 +1,11 @@
 package com.example.miravereda.activities;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -8,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miravereda.activities.model.Pelicula;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.ieslavereda.miravereda.R;
@@ -16,6 +22,7 @@ public class CestaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private List<Pelicula> peliculas;
+    private Pelicula p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +30,11 @@ public class CestaActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cesta);
 
         recyclerView = findViewById(R.id.recyclerPeliculasAdquiridas);
+        peliculas = new ArrayList<>();
+
+        Bundle extras = getIntent().getExtras();
+        p = (Pelicula) extras.get("pelicula");
+        peliculas.add(p);
 
         recyclerView.setAdapter(new AdaptadorPeliculasAdquiridas(this, peliculas));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));

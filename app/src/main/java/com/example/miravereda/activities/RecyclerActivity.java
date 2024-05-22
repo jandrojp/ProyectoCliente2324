@@ -1,5 +1,6 @@
 package com.example.miravereda.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -7,6 +8,9 @@ import android.widget.CompoundButton;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResult;
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,45 +34,15 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
     private FloatingActionButton botonCarrito;
     private Switch sOrden;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
-        sOrden = findViewById(R.id.sOrdenar);
 
         showProgress();
         executeCall(this);
-
-        sOrden.setOnCheckedChangeListener((compoundButton, b) -> {
-
-            showProgress();
-            executeCall(new CallInterface() {
-
-
-                @Override
-                public void doInBackground() {
-                    peliculas = Connector.getConector().getAsList(Pelicula.class, "peliculas");
-
-                }
-
-                @Override
-                public void doInUI() {
-                    hideProgress();
-
-                    if (b) {
-                        peliculas.sort(Pelicula.SORT_BY_VALORACION);
-                        sOrden.setText("Valoración ");
-
-                    } else {
-                        peliculas.sort(Pelicula.SORT_BY_TITULO);
-                        sOrden.setText("Nombre ");
-                    }
-
-                }
-
-            });
-        });
 
     }
 
@@ -85,8 +59,13 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
 
         recyclerView = findViewById(R.id.recycler);
         botonCarrito = findViewById(R.id.bttnCompra);
+        sOrden = findViewById(R.id.sOrdenar);
 
-        recyclerView.setAdapter(new Adaptador(this, peliculas));
+        sOrden = findViewById(R.id.sOrdenar);
+
+
+        Adaptador adaptador = new Adaptador(this, peliculas);
+        recyclerView.setAdapter(adaptador);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
@@ -94,6 +73,19 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
         botonCarrito.setOnClickListener(view -> {
             Intent intent = new Intent(this, CestaActivity.class);
             startActivity(intent);
+        });
+
+        sOrden.setOnCheckedChangeListener((compoundButton, b) -> {
+            if (b) {
+                peliculas.sort(Pelicula.SORT_BY_VALORACION);
+                sOrden.setText("Valoración ");
+            } else {
+                peliculas.sort(Pelicula.SORT_BY_TITULO);
+                sOrden.setText("Nombre ");
+            }
+
+            // Notifica al adaptador de cambios
+            adaptador.notifyDataSetChanged();
         });
     }
 

@@ -6,7 +6,7 @@ import java.text.DateFormat;
 import java.time.LocalDate;
 import java.util.Comparator;
 
-public class Pelicula implements Serializable, Comparable<Pelicula> {
+public class Pelicula implements Serializable {
 
     public static Comparator<Pelicula> SORT_BY_TITULO = Comparator.comparing(Pelicula::getTitulo);
     public static Comparator<Pelicula> SORT_BY_VALORACION = Comparator.comparing(Pelicula::getValoracion_media);
@@ -47,8 +47,4 @@ public class Pelicula implements Serializable, Comparable<Pelicula> {
         return valoracion_media;
     }
 
-    @Override
-    public int compareTo(Pelicula pelicula) {
-        return titulo.compareTo(pelicula.getTitulo());
-    }
 }
