@@ -1,4 +1,4 @@
-package com.example.myweatherbase;
+package com.example.miravereda;
 
 import org.junit.Test;
 

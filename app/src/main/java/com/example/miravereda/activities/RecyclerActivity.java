@@ -65,8 +65,6 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
                         sOrden.setText("Nombre ");
                     }
 
-                   peliculas.notifyAll();
-
                 }
 
             });
