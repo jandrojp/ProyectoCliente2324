@@ -32,7 +32,6 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
     private List<Pelicula> peliculas;
     private RecyclerView recyclerView;
     private FloatingActionButton botonCarrito;
-    private Switch sOrden;
 
 
     @Override
@@ -59,9 +58,7 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
 
         recyclerView = findViewById(R.id.recycler);
         botonCarrito = findViewById(R.id.bttnCompra);
-        sOrden = findViewById(R.id.sOrdenar);
 
-        sOrden = findViewById(R.id.sOrdenar);
 
 
         Adaptador adaptador = new Adaptador(this, peliculas);
@@ -71,22 +68,10 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         botonCarrito.setOnClickListener(view -> {
-            Intent intent = new Intent(this, CestaActivity.class);
-            startActivity(intent);
+            finish();
         });
 
-        sOrden.setOnCheckedChangeListener((compoundButton, b) -> {
-            if (b) {
-                peliculas.sort(Pelicula.SORT_BY_VALORACION);
-                sOrden.setText("Valoración ");
-            } else {
-                peliculas.sort(Pelicula.SORT_BY_TITULO);
-                sOrden.setText("Nombre ");
-            }
 
-            // Notifica al adaptador de cambios
-            adaptador.notifyDataSetChanged();
-        });
     }
 
 }

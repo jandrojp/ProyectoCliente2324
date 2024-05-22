@@ -8,9 +8,6 @@ import java.util.Comparator;
 
 public class Pelicula implements Serializable {
 
-    public static Comparator<Pelicula> SORT_BY_TITULO = Comparator.comparing(Pelicula::getTitulo);
-    public static Comparator<Pelicula> SORT_BY_VALORACION = Comparator.comparing(Pelicula::getValoracion_media);
-
     public int id;
     public String tipo;
     public String titulo;
@@ -37,14 +34,6 @@ public class Pelicula implements Serializable {
         this.valoracion_media = valoracion_media;
         this.preciovisionado = preciovisionado;
         this.portada = portada;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public double getValoracion_media() {
-        return valoracion_media;
     }
 
 }

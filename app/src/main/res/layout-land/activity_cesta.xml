@@ -9,6 +9,7 @@
         android:id="@+id/recyclerPeliculasAdquiridas"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="#E8E7E7"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,21 +24,11 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <TextView
-            android:id="@+id/tvPrecioTotal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:gravity="center_horizontal"
-            android:text="PRECIO TOTAL:"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp" />
-
-        <TextView
             android:id="@+id/tvTotalPagar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
             android:gravity="center_horizontal"
             android:text="€"
             android:textColor="#FFFFFF"
