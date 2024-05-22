@@ -2,6 +2,7 @@ package com.example.miravereda.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Switch;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -23,11 +24,14 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
     private List<Pelicula> peliculas;
     private RecyclerView recyclerView;
     private FloatingActionButton botonCarrito;
+    private Switch sOrden;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
+
+        sOrden = findViewById(R.id.sOrdenar);
 
         showProgress();
         executeCall(this);

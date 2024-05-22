@@ -7,10 +7,10 @@ import com.example.miravereda.activities.preferencias.GestionPreferencias;
 public class Parameters {
 
 
-    private Context context;
+    private static Context context;
 
-    String IP = GestionPreferencias.getInstance().getIP(context);
-    String port = GestionPreferencias.getInstance().getPort(context);
+    public static String IP = GestionPreferencias.getInstance().getIP(context);
+    public static String PUERTO = GestionPreferencias.getInstance().getPort(context);
     String schema = GestionPreferencias.getInstance().getSchema(context);
 
 
