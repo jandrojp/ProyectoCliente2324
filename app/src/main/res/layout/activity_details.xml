@@ -10,8 +10,8 @@
         android:id="@+id/iContenidoDetalle"
         android:layout_width="192dp"
         android:layout_height="192dp"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_launcher_background" />
@@ -20,11 +20,12 @@
         android:id="@+id/tvTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Titulo"
         android:textColor="#000000"
-        android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/iContenidoDetalle"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/iContenidoDetalle"
         app:layout_constraintTop_toBottomOf="@+id/iContenidoDetalle" />
 
@@ -33,10 +34,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Autor"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/tvTitulo"
+        android:textColor="#767575"
+        android:textSize="20sp"
+        android:textStyle="normal"
         app:layout_constraintStart_toStartOf="@+id/tvTitulo"
         app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
@@ -44,12 +44,12 @@
         android:id="@+id/textViewPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="48dp"
         android:text="Precio:"
         android:textColor="#000000"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAutor" />
+        android:textSize="17sp"
+        app:layout_constraintStart_toEndOf="@+id/iContenidoDetalle"
+        app:layout_constraintTop_toTopOf="@+id/iContenidoDetalle" />
 
     <TextView
         android:id="@+id/tvPrecio"
@@ -58,6 +58,7 @@
         android:layout_marginStart="8dp"
         android:text="precio"
         android:textColor="#000000"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewPrecio"
         app:layout_constraintStart_toEndOf="@+id/textViewPrecio"
@@ -70,9 +71,9 @@
         android:layout_marginStart="2dp"
         android:text="€"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/tvGenero"
+        app:layout_constraintBottom_toBottomOf="@+id/tvPrecio"
         app:layout_constraintStart_toEndOf="@+id/tvPrecio"
         app:layout_constraintTop_toTopOf="@+id/tvPrecio" />
 
@@ -80,8 +81,10 @@
         android:id="@+id/textViewNota"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Género:"
         android:textColor="#000000"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@+id/textViewPrecio"
         app:layout_constraintTop_toBottomOf="@+id/textViewPrecio" />
 
@@ -92,8 +95,9 @@
         android:layout_marginStart="8dp"
         android:text="nota"
         android:textColor="#000000"
+        android:textSize="17sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textViewNotaMedia"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewNota"
         app:layout_constraintStart_toEndOf="@+id/textViewNota"
         app:layout_constraintTop_toTopOf="@+id/textViewNota" />
 
@@ -101,8 +105,10 @@
         android:id="@+id/textViewNotaMedia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Nota media:"
         android:textColor="#000000"
+        android:textSize="17sp"
         app:layout_constraintStart_toStartOf="@+id/textViewNota"
         app:layout_constraintTop_toBottomOf="@+id/textViewNota" />
 
@@ -111,18 +117,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="nota media"
+        android:text="n"
         android:textColor="#000000"
+        android:textSize="17sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/textViewNotaMedia"
         app:layout_constraintStart_toEndOf="@+id/textViewNotaMedia"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNota" />
+        app:layout_constraintTop_toTopOf="@+id/textViewNotaMedia" />
 
     <TextView
         android:id="@+id/textViewValoracion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="40dp"
         android:gravity="center"
         android:text="Danos tu valoración"
         android:textAlignment="center"
@@ -130,7 +137,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvNotaMedia" />
+        app:layout_constraintTop_toBottomOf="@+id/tvAutor" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"

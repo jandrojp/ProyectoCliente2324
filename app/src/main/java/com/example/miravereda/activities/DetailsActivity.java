@@ -62,7 +62,7 @@ public class DetailsActivity extends BaseActivity {
 
 
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + p.portada, image);
-        titulo.setText(p.titulo);
+        titulo.setText(p.titulo.toUpperCase());
         autor.setText(p.director);
         precio.setText(String.valueOf((int)p.preciovisionado));
         genero.setText(p.genero);
@@ -132,7 +132,6 @@ public class DetailsActivity extends BaseActivity {
 
         adquirir.setOnClickListener(view -> {
 
-            Toast.makeText(this, "Se ha añadido correctamente a la cesta", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, CestaActivity.class);
             intent.putExtra("pelicula", p);
             startActivity(intent);
