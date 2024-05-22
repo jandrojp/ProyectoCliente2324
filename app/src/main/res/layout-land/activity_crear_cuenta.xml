@@ -80,9 +80,9 @@
         android:ems="10"
         android:hint="Tarjeta de crédito"
         android:inputType="text"
-        app:layout_constraintEnd_toEndOf="@+id/etDate"
-        app:layout_constraintStart_toStartOf="@+id/etDate"
-        app:layout_constraintTop_toBottomOf="@+id/etDate" />
+        app:layout_constraintEnd_toEndOf="@+id/etCodigoPostal"
+        app:layout_constraintStart_toStartOf="@+id/etCodigoPostal"
+        app:layout_constraintTop_toBottomOf="@+id/etCodigoPostal" />
 
     <EditText
         android:id="@+id/etUsuario"
@@ -94,17 +94,6 @@
         app:layout_constraintEnd_toEndOf="@+id/etTarjetaCredito"
         app:layout_constraintStart_toStartOf="@+id/etTarjetaCredito"
         app:layout_constraintTop_toBottomOf="@+id/etTarjetaCredito" />
-
-    <EditText
-        android:id="@+id/etDate"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:hint="Fecha de nacimiento"
-        android:inputType="date"
-        app:layout_constraintEnd_toEndOf="@+id/etCodigoPostal"
-        app:layout_constraintStart_toStartOf="@+id/etCodigoPostal"
-        app:layout_constraintTop_toBottomOf="@+id/etCodigoPostal" />
 
     <EditText
         android:id="@+id/etContrasenya"
@@ -121,12 +110,12 @@
         android:id="@+id/bttnCrear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#0D90F8"
         android:text="CREAR CUENTA"
         android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDomicilio" />
+        app:layout_constraintEnd_toEndOf="@+id/etContrasenya"
+        app:layout_constraintStart_toStartOf="@+id/etContrasenya"
+        app:layout_constraintTop_toBottomOf="@+id/etContrasenya" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

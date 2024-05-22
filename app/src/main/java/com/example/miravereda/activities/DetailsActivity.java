@@ -83,6 +83,7 @@ public class DetailsActivity extends BaseActivity {
             }
         });
 
+
         guardarValoracion.setOnClickListener(
                 v -> {
                     showProgress();
@@ -119,6 +120,8 @@ public class DetailsActivity extends BaseActivity {
                     });
                 }
         );
+
+
 
         guardarValoracion.setOnClickListener(view -> {
             auxiliar = 5;

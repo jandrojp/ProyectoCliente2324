@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.miravereda.API.Connector;
 
 import com.example.miravereda.activities.model.Pelicula;
+import com.example.miravereda.activities.model.Usuario;
 import com.example.miravereda.base.BaseActivity;
 import com.example.miravereda.base.CallInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -38,18 +40,38 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
         showProgress();
         executeCall(this);
 
-        sOrden.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            if (isChecked) {
-                peliculas.sort(Pelicula.SORT_BY_VALORACION);
-                sOrden.setText("Valoración ");
+        sOrden.setOnCheckedChangeListener((compoundButton, b) -> {
 
-            } else {
-                peliculas.sort(Pelicula.SORT_BY_TITULO);
-                sOrden.setText("Nombre ");
-            }
+            showProgress();
+            executeCall(new CallInterface() {
 
-            // customRecyclerView.notifyDataSetChanged();
+
+                @Override
+                public void doInBackground() {
+                    peliculas = Connector.getConector().getAsList(Pelicula.class, "peliculas");
+
+                }
+
+                @Override
+                public void doInUI() {
+                    hideProgress();
+
+                    if (b) {
+                        peliculas.sort(Pelicula.SORT_BY_VALORACION);
+                        sOrden.setText("Valoración ");
+
+                    } else {
+                        peliculas.sort(Pelicula.SORT_BY_TITULO);
+                        sOrden.setText("Nombre ");
+                    }
+
+                   peliculas.notifyAll();
+
+                }
+
+            });
         });
+
     }
 
     // Realizamos la llamada y recogemos los datos en un objeto Root
@@ -76,4 +98,5 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
             startActivity(intent);
         });
     }
+
 }

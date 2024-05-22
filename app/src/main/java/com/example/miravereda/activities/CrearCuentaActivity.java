@@ -41,7 +41,6 @@ public class CrearCuentaActivity extends BaseActivity {
         etEmail = findViewById(R.id.etEmail);
         etDomicilio = findViewById(R.id.etDomicilio);
         etCP = findViewById(R.id.etCodigoPostal);
-        etFechaNacimiento = findViewById(R.id.etDate);
         etTarjeta = findViewById(R.id.etTarjetaCredito);
         etUsuario = findViewById(R.id.etUsuario);
         etContrasenya = findViewById(R.id.etContrasenya);
@@ -75,7 +74,7 @@ public class CrearCuentaActivity extends BaseActivity {
                                         etEmail.getText().toString(),
                                         etDomicilio.getText().toString(),
                                         etCP.getText().toString(),
-                                        etFechaNacimiento.getText().toString(),
+                                        null,
                                         etTarjeta.getText().toString());
 
                                 u = Connector.getConector().post(Usuario.class, u, "usuarios");
