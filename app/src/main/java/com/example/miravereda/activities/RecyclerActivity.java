@@ -2,6 +2,8 @@ package com.example.miravereda.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Switch;
 
 import androidx.recyclerview.widget.DividerItemDecoration;
@@ -35,6 +37,19 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
 
         showProgress();
         executeCall(this);
+
+        sOrden.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            if (isChecked) {
+                peliculas.sort(Pelicula.SORT_BY_VALORACION);
+                sOrden.setText("Valoración ");
+
+            } else {
+                peliculas.sort(Pelicula.SORT_BY_TITULO);
+                sOrden.setText("Nombre ");
+            }
+
+            // customRecyclerView.notifyDataSetChanged();
+        });
     }
 
     // Realizamos la llamada y recogemos los datos en un objeto Root
