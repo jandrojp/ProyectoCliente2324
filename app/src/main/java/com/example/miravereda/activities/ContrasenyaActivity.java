@@ -6,13 +6,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 
 import com.example.miravereda.API.Connector;
 import com.example.miravereda.activities.model.Usuario;
 import com.example.miravereda.base.BaseActivity;
 import com.example.miravereda.base.CallInterface;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,6 +24,7 @@ public class ContrasenyaActivity extends BaseActivity {
     private List<Usuario> usuarios;
     private EditText usuarioActualizar;
     private EditText nuevaContrasenya;
+    private FloatingActionButton fabReturn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +34,9 @@ public class ContrasenyaActivity extends BaseActivity {
         actualizarContrasenya = findViewById(R.id.bttnActualizarContrasenya);
         usuarioActualizar = findViewById(R.id.txtUser);
         nuevaContrasenya = findViewById(R.id.txtPassword);
+        fabReturn = findViewById(R.id.fabRet);
+
+        fabReturn.setOnClickListener(view -> finish());
 
         actualizarContrasenya.setOnClickListener(
                 v -> {
