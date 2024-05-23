@@ -1,11 +1,10 @@
 package com.example.miravereda.activities.model;
 
 import java.io.Serializable;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.time.LocalDate;
-import java.util.Comparator;
 
+/**
+ * Clase la cual contiene los atributos de una pelicula con su constructor
+ */
 public class Pelicula implements Serializable {
 
     public int id;
@@ -21,6 +20,21 @@ public class Pelicula implements Serializable {
     public double preciovisionado;
     public String portada;
 
+    /**
+     * Creamos una pelicula con todos sus atributos
+     * @param id identificador único
+     * @param tipo pelicula / serie / corto
+     * @param titulo nombre de la pelicula
+     * @param idioma en la que está definida
+     * @param genero miedo / accion / suspense...
+     * @param descripcion sinopsis de lo que va
+     * @param director nombre del que ha dirigido
+     * @param actores participan en ella
+     * @param duracion medido en h
+     * @param valoracion_media de las votaciones
+     * @param preciovisionado de cada título
+     * @param portada imagen
+     */
     public Pelicula(int id, String tipo, String titulo, String idioma, String genero, String descripcion, String director, String actores, int duracion, double valoracion_media, double preciovisionado, String portada) {
         this.id = id;
         this.tipo = tipo;

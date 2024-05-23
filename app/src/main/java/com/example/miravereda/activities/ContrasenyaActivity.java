@@ -5,19 +5,18 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
-
 import com.example.miravereda.API.Connector;
 import com.example.miravereda.activities.model.Usuario;
 import com.example.miravereda.base.BaseActivity;
 import com.example.miravereda.base.CallInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
 import java.util.Optional;
-
 import es.ieslavereda.miravereda.R;;
 
+/**
+ *  Clase la cual te permite modificar la contraseña mediante tu usuario
+ */
 public class ContrasenyaActivity extends BaseActivity {
 
     private Button actualizarContrasenya;
@@ -26,6 +25,10 @@ public class ContrasenyaActivity extends BaseActivity {
     private EditText nuevaContrasenya;
     private FloatingActionButton fabReturn;
 
+    /**
+     * Lanzamos la app y la enlazamos con su layout
+     * @param savedInstanceState Contenedor donde se va a almacenar
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

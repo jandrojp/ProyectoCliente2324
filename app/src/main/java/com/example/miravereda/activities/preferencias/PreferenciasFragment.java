@@ -3,15 +3,22 @@ package com.example.miravereda.activities.preferencias;
 import android.os.Bundle;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceFragmentCompat;
-
 import java.util.Arrays;
 import java.util.List;
-
 import es.ieslavereda.miravereda.R;
 
-
+/**
+ * Clase que recoge todos los datos que se van a mostrar en la parte de las preferencias
+ */
 public class PreferenciasFragment extends PreferenceFragmentCompat {
 
+    /**
+     * Crea las preferencias con los datos guardados
+     * @param savedInstanceState If the fragment is being re-created from a previous saved state,
+     *                           this is the state.
+     * @param rootKey            If non-null, this preference fragment should be rooted at the
+     *                           {@link} with this key.
+     */
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
@@ -36,8 +43,6 @@ public class PreferenciasFragment extends PreferenceFragmentCompat {
         });
 
 
-
-
         // Theme preferences with ListPreference
         ListPreference themePreference = getPreferenceManager().findPreference(getString(R.string.settings_theme_key));
         if (themePreference.getValue() == null) {
@@ -47,8 +52,6 @@ public class PreferenciasFragment extends PreferenceFragmentCompat {
             ThemeSetup.applyTheme(ThemeSetup.Mode.valueOf((String) newValue));
             return true;
         });
-
-
 
     }
 }

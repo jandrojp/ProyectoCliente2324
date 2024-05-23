@@ -1,26 +1,20 @@
 package com.example.miravereda.activities;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.TextView;
-
-import androidx.activity.result.ActivityResultLauncher;
-import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.miravereda.activities.model.Pelicula;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import es.ieslavereda.miravereda.R;
 
+/**
+ * Clase donde podemos ver las peliculas que se han adquirido y que vamos a comprar
+ */
 public class CestaActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
@@ -29,6 +23,10 @@ public class CestaActivity extends AppCompatActivity {
     private TextView costeTotal;
     private FloatingActionButton floatingActionButton;
 
+    /**
+     * Lanzamos la app y la enlazamos con su layout
+     * @param savedInstanceState Contenedor donde se va a almacenar
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

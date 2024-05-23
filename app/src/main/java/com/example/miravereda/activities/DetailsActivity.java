@@ -2,29 +2,23 @@ package com.example.miravereda.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import com.example.miravereda.API.Connector;
 import com.example.miravereda.activities.model.Pelicula;
-import com.example.miravereda.activities.model.Usuario;
 import com.example.miravereda.base.BaseActivity;
-import com.example.miravereda.base.CallInterface;
 import com.example.miravereda.base.ImageDownloader;
 import com.example.miravereda.base.Parameters;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DecimalFormat;
-import java.util.List;
-import java.util.Optional;
 
 import es.ieslavereda.miravereda.R;
 
+/**
+ * Esta clase detalla la pelicula que se haya seleccionado de la clase RecyclerActivity
+ */
 public class DetailsActivity extends BaseActivity {
 
     private ImageView image;
@@ -41,6 +35,10 @@ public class DetailsActivity extends BaseActivity {
     private TextView notaMedia;
     private FloatingActionButton floatingActionButton;
 
+    /**
+     * Lanzamos la app y la enlazamos con su layout
+     * @param savedInstanceState Contenedor donde se va a almacenar
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -138,8 +136,6 @@ public class DetailsActivity extends BaseActivity {
         );
 
          */
-
-
 
         adquirir.setOnClickListener(view -> {
 

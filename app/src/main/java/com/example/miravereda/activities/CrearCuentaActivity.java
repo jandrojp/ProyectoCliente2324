@@ -2,21 +2,20 @@ package com.example.miravereda.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.miravereda.API.Connector;
 import com.example.miravereda.activities.model.Usuario;
 import com.example.miravereda.base.BaseActivity;
 import com.example.miravereda.base.CallInterface;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
 import java.util.List;
-
 import es.ieslavereda.miravereda.R;
 
+/**
+ * Clase la cual crea una nueva cuenta si los datos son válidos
+ */
 public class CrearCuentaActivity extends BaseActivity {
 
     private EditText etNombre;
@@ -25,7 +24,6 @@ public class CrearCuentaActivity extends BaseActivity {
     private EditText etEmail;
     private EditText etDomicilio;
     private EditText etCP;
-    private EditText etFechaNacimiento;
     private EditText etTarjeta;
     private EditText etUsuario;
     private EditText etContrasenya;
@@ -33,6 +31,10 @@ public class CrearCuentaActivity extends BaseActivity {
     private List<Usuario> usuarios;
     private FloatingActionButton floatingActionButton;
 
+    /**
+     * Lanzamos la app y la enlazamos con su layout
+     * @param savedInstanceState Contenedor donde se va a almacenar
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,10 +108,6 @@ public class CrearCuentaActivity extends BaseActivity {
                     });
                 }
         );
-
-
-
-
 
     }
 
