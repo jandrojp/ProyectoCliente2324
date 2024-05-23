@@ -56,7 +56,7 @@
             android:layout_width="0dp"
             android:layout_height="48dp"
             android:ems="10"
-            android:hint="Email"
+            android:hint="Email "
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="@+id/etDNI"
             app:layout_constraintStart_toStartOf="@+id/etDNI"
