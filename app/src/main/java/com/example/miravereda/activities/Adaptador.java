@@ -45,6 +45,9 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
         viewHolder.tvNombreContenido.setText(peliculaList.get(position).titulo);
         viewHolder.tvValoracion.setText(String.valueOf(peliculaList.get(position).valoracion_media));
+
+        Double tiempo = (double) (peliculaList.get(position).duracion / 60);
+        viewHolder.tvDuracion.setText(tiempo + " h");
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + peliculaList.get(position).portada, viewHolder.iContenido);
 
         viewHolder.itemView.setOnClickListener(view -> {
@@ -70,6 +73,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         private ImageView iContenido;
         private TextView tvNombreContenido;
         private TextView tvValoracion;
+        private TextView tvDuracion;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -78,6 +82,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
             iContenido = itemView.findViewById(R.id.iContenido);
             tvNombreContenido = itemView.findViewById(R.id.tvNombreContenido);
             tvValoracion = itemView.findViewById(R.id.tvValoracion);
+            tvDuracion = itemView.findViewById(R.id.tvDuracion);
         }
     }
 
