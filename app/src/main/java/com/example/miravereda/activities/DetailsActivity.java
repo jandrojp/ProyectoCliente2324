@@ -2,6 +2,7 @@ package com.example.miravereda.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -18,6 +19,7 @@ import com.example.miravereda.base.ImageDownloader;
 import com.example.miravereda.base.Parameters;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Optional;
 
@@ -57,9 +59,7 @@ public class DetailsActivity extends BaseActivity {
         genero = findViewById(R.id.tvGenero);
         notaMedia = findViewById(R.id.tvNotaMedia);
 
-
         Pelicula p = (Pelicula) getIntent().getExtras().get("lista");
-
 
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + p.portada, image);
         titulo.setText(p.titulo.toUpperCase());
@@ -83,7 +83,20 @@ public class DetailsActivity extends BaseActivity {
             }
         });
 
+        guardarValoracion.setOnClickListener(view -> {
 
+            DecimalFormat df = new DecimalFormat("#.0");
+            auxiliar = 5;
+            double mediaTotal = Double.parseDouble(df.format((Double.parseDouble(notaMedia.getText().toString()) + Double.parseDouble(valoracion.getText().toString())) / 2));
+            notaMedia.setText(String.valueOf(mediaTotal));
+
+            valoracion.setText(String.valueOf(auxiliar));
+
+            Toast.makeText(getApplicationContext(), "Su valoración ha sido guardada", Toast.LENGTH_SHORT).show();
+        });
+
+
+        /*
         guardarValoracion.setOnClickListener(
                 v -> {
                     showProgress();
@@ -121,14 +134,9 @@ public class DetailsActivity extends BaseActivity {
                 }
         );
 
+         */
 
 
-        guardarValoracion.setOnClickListener(view -> {
-            auxiliar = 5;
-            valoracion.setText(String.valueOf(auxiliar));
-
-            Toast.makeText(this, "Su valoración ha sido guardada", Toast.LENGTH_SHORT).show();
-        });
 
         adquirir.setOnClickListener(view -> {
 
