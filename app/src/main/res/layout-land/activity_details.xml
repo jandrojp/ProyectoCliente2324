@@ -10,19 +10,19 @@
         android:id="@+id/fabVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
         app:backgroundTint="#0D90F8"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@android:drawable/ic_menu_revert" />
 
     <ImageView
         android:id="@+id/iContenidoDetalle"
         android:layout_width="192dp"
         android:layout_height="192dp"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="40dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -34,7 +34,8 @@
         android:layout_height="wrap_content"
         android:text="Titulo"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="@+id/textViewPrecio"
         app:layout_constraintTop_toTopOf="@+id/iContenidoDetalle" />
 
@@ -42,20 +43,18 @@
         android:id="@+id/tvAutor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="Autor"
-        android:textColor="#000000"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/iContenidoDetalle"
-        app:layout_constraintStart_toStartOf="@+id/iContenidoDetalle"
-        app:layout_constraintTop_toBottomOf="@+id/iContenidoDetalle" />
+        android:textColor="#767575"
+        android:textSize="20sp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toStartOf="@+id/tvTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
     <TextView
         android:id="@+id/textViewPrecio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="96dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="80dp"
         android:text="Precio:"
         android:textColor="#000000"
@@ -139,8 +138,8 @@
         android:textAlignment="center"
         android:textColor="#9E9D9D"
         android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/textViewNotaMedia"
-        app:layout_constraintTop_toBottomOf="@+id/tvNotaMedia" />
+        app:layout_constraintTop_toBottomOf="@+id/tvNotaMedia"
+        tools:layout_editor_absoluteX="232dp" />
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -199,8 +198,8 @@
         android:layout_marginTop="8dp"
         android:backgroundTint="#0D90F8"
         android:text="ALQUILAR"
-        app:layout_constraintEnd_toEndOf="@+id/tvAutor"
-        app:layout_constraintStart_toStartOf="@+id/tvAutor"
-        app:layout_constraintTop_toBottomOf="@+id/tvAutor" />
+        app:layout_constraintEnd_toEndOf="@+id/iContenidoDetalle"
+        app:layout_constraintStart_toStartOf="@+id/iContenidoDetalle"
+        app:layout_constraintTop_toBottomOf="@+id/iContenidoDetalle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

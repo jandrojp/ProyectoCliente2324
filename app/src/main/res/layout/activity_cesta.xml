@@ -27,9 +27,10 @@
             android:id="@+id/tvTotalPagar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:gravity="center_horizontal"
+            android:gravity="left"
             android:text="€"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
@@ -39,11 +40,24 @@
             android:id="@+id/bttnConfirmar"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_gravity="left"
+            android:layout_marginLeft="16dp"
             android:layout_marginBottom="16dp"
             android:backgroundTint="#E8E7E7"
             android:text="CONFIRMAR COMPRA"
             android:textColor="#000000" />
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:clickable="true"
+        app:backgroundTint="#FFFFFF"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_revert" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
