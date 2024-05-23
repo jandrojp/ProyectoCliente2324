@@ -3,6 +3,7 @@ package com.example.miravereda.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.result.ActivityResultLauncher;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.miravereda.activities.model.Pelicula;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,7 @@ public class CestaActivity extends AppCompatActivity {
     private List<Pelicula> peliculas;
     private Pelicula p;
     private TextView costeTotal;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,14 @@ public class CestaActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerPeliculasAdquiridas);
         costeTotal = findViewById(R.id.tvTotalPagar);
+        floatingActionButton = findViewById(R.id.fabR);
         peliculas = new ArrayList<>();
 
         Bundle extras = getIntent().getExtras();
         p = (Pelicula) extras.get("pelicula");
         peliculas.add(p);
+
+        floatingActionButton.setOnClickListener(view -> finish());
 
         costeTotal.setText("PRECIO TOTAL:  " + p.preciovisionado + " €");
         recyclerView.setAdapter(new AdaptadorPeliculasAdquiridas(this, peliculas));
