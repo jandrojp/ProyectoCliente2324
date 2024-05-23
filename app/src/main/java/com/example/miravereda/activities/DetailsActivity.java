@@ -39,6 +39,7 @@ public class DetailsActivity extends BaseActivity {
     private TextView precio;
     private TextView genero;
     private TextView notaMedia;
+    private FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +53,7 @@ public class DetailsActivity extends BaseActivity {
         guardarValoracion = findViewById(R.id.fabGuardar);
         adquirir = findViewById(R.id.bttnAdquirir);
         image = findViewById(R.id.iContenidoDetalle);
+        floatingActionButton = findViewById(R.id.fabVolver);
 
         titulo = findViewById(R.id.tvTitulo);
         autor = findViewById(R.id.tvAutor);
@@ -68,6 +70,7 @@ public class DetailsActivity extends BaseActivity {
         genero.setText(p.genero);
         notaMedia.setText(String.valueOf(p.valoracion_media));
 
+        floatingActionButton.setOnClickListener(view -> finish());
 
         btnRestar.setOnClickListener(view -> {
             if (auxiliar > 0) {

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iContenido"
-        android:layout_width="72dp"
-        android:layout_height="72dp"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
@@ -25,7 +25,8 @@
         android:layout_marginStart="32dp"
         android:text="Nombre contenido"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/iContenido"
         app:layout_constraintStart_toEndOf="@+id/iContenido"
         app:layout_constraintTop_toTopOf="@+id/iContenido" />
@@ -37,7 +38,7 @@
         android:layout_marginStart="64dp"
         android:text="Valoracion"
         android:textColor="#000000"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/tvNombreContenido"
         app:layout_constraintTop_toTopOf="@+id/tvNombreContenido" />
 
