@@ -16,7 +16,7 @@ import java.util.List;
 import es.ieslavereda.miravereda.R;
 
 /**
- * Clase que muestra los datos 1 a 1 de cada pelicula adquirida, para que se puedan mostrar en el Recycler
+ * Clase que sirve como adaptador para mostrar una lista de películas en un RecyclerView.
  */
 public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
 
@@ -25,9 +25,10 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     private List<Pelicula> peliculaList;
 
     /**
-     * Constructor para crear un objeto Adaptador
-     * @param context de que clase se va a obtener la información
-     * @param peliculaList lista de peliculas adquiridas, las cuales se van a visualizar
+     * Constructor para crear un objeto Adaptador.
+     *
+     * @param context      El contexto de donde se obtendrá la información.
+     * @param peliculaList La lista de películas que se visualizará.
      */
     public Adaptador(@NonNull Context context, List<Pelicula> peliculaList) {
         this.context = context;
@@ -36,10 +37,11 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     }
 
     /**
-     * Enlazamos con su layout el adaptador
-     * @param parent el padre de donde obtiene la informacón
-     * @param viewType la vista presente
-     * @return un objeto de tipo ViewHolder
+     * Crea una nueva instancia de ViewHolder al inflar el diseño de un elemento de la lista.
+     *
+     * @param parent   El ViewGroup al que se añadirá la vista después de ser unida a la ventana.
+     * @param viewType El tipo de vista del nuevo ViewHolder.
+     * @return Un objeto ViewHolder que contiene la vista del elemento de la lista.
      */
     @NonNull
     @Override
@@ -49,13 +51,14 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     }
 
     /**
-     * Muestra la información de todas las peliculas a medida que vas deslizando
-     * @param viewHolder Donde estan los datos de cada una de las películas adquiridas
-     * @param position La cual esta la pelicula que va iterando
+     * Vincula los datos de una película específica con los elementos de la vista.
+     *
+     * @param viewHolder El ViewHolder que debe ser actualizado para representar el contenido del elemento.
+     * @param position   La posición del elemento en la lista de datos.
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-
+        // Configuración de los elementos de la vista con los datos de la película en la posición dada
         viewHolder.tvNombreContenido.setText(peliculaList.get(position).titulo);
         viewHolder.tvValoracion.setText(String.valueOf(peliculaList.get(position).valoracion_media));
 
@@ -63,6 +66,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         viewHolder.tvDuracion.setText(tiempo + " h");
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + peliculaList.get(position).portada, viewHolder.iContenido);
 
+        // Acción al hacer clic en un elemento de la lista
         viewHolder.itemView.setOnClickListener(view -> {
             Intent intent = new Intent(view.getContext(), DetailsActivity.class);
             intent.putExtra("lista", peliculaList.get(position));
@@ -73,8 +77,9 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     }
 
     /**
-     * Devuelve el tamaño de la lista de peliculas adquiridas
-     * @return El tamaño de la lista
+     * Devuelve el número total de elementos en la lista de películas.
+     *
+     * @return El tamaño de la lista de películas.
      */
     @Override
     public int getItemCount() {
@@ -82,7 +87,7 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
     }
 
     /**
-     * Clase donde se enlaza los datos de las peliculas adquiridas con la app
+     * Clase que representa un elemento de la vista de la lista de películas.
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -92,8 +97,9 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         private TextView tvDuracion;
 
         /**
-         * Enlazamos los atributos de la clase con los elementos del layout
-         * @param itemView Define cata item (pelicula) del recycler
+         * Constructor que enlaza los elementos de la vista con los atributos de la clase.
+         *
+         * @param itemView La vista que representa un elemento de la lista.
          */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -104,7 +110,6 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
             tvDuracion = itemView.findViewById(R.id.tvDuracion);
         }
     }
-
 }
 
 

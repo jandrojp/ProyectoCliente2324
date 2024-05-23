@@ -13,11 +13,10 @@ import com.example.miravereda.base.Parameters;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.DecimalFormat;
-
 import es.ieslavereda.miravereda.R;
 
 /**
- * Esta clase detalla la pelicula que se haya seleccionado de la clase RecyclerActivity
+ * Actividad que muestra los detalles de una película y permite al usuario interactuar con ellos.
  */
 public class DetailsActivity extends BaseActivity {
 
@@ -36,14 +35,16 @@ public class DetailsActivity extends BaseActivity {
     private FloatingActionButton floatingActionButton;
 
     /**
-     * Lanzamos la app y la enlazamos con su layout
-     * @param savedInstanceState Contenedor donde se va a almacenar
+     * Método llamado al crear la actividad. Se encarga de inicializar la interfaz de usuario y los componentes.
+     *
+     * @param savedInstanceState Objeto donde se almacena el estado de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
 
+        // Inicialización de los componentes de la interfaz de usuario
         btnRestar = findViewById(R.id.bttnMenos);
         btnSumar = findViewById(R.id.bttnMas);
         valoracion = findViewById(R.id.tvValoracionContenido);
@@ -59,8 +60,10 @@ public class DetailsActivity extends BaseActivity {
         genero = findViewById(R.id.tvGenero);
         notaMedia = findViewById(R.id.tvNotaMedia);
 
+        // Obtención de los datos de la película enviados desde la actividad anterior
         Pelicula p = (Pelicula) getIntent().getExtras().get("lista");
 
+        // Configuración de los datos de la película en la interfaz de usuario
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + p.portada, image);
         titulo.setText(p.titulo.toUpperCase());
         autor.setText(p.director);
@@ -68,8 +71,10 @@ public class DetailsActivity extends BaseActivity {
         genero.setText(p.genero);
         notaMedia.setText(String.valueOf(p.valoracion_media));
 
+        // Configuración del botón flotante para regresar a la actividad anterior
         floatingActionButton.setOnClickListener(view -> finish());
 
+        // Configuración de los botones para aumentar o disminuir la valoración de la película
         btnRestar.setOnClickListener(view -> {
             if (auxiliar > 0) {
                 auxiliar -= 0.5;
@@ -84,6 +89,7 @@ public class DetailsActivity extends BaseActivity {
             }
         });
 
+        // Configuración del botón para guardar la valoración
         guardarValoracion.setOnClickListener(view -> {
 
             DecimalFormat df = new DecimalFormat("#.0");
@@ -96,47 +102,7 @@ public class DetailsActivity extends BaseActivity {
             Toast.makeText(getApplicationContext(), "Su valoración ha sido guardada", Toast.LENGTH_SHORT).show();
         });
 
-
-        /*
-        guardarValoracion.setOnClickListener(
-                v -> {
-                    showProgress();
-                    executeCall(new CallInterface() {
-
-                        @Override
-                        public void doInBackground() {
-
-                            double valoracionGuardada = Double.parseDouble(valoracion.getText().toString());
-
-                            Pelicula pelicula = new Pelicula(p.id,
-                                    p.tipo,
-                                    p.titulo,
-                                    p.idioma,
-                                    p.genero,
-                                    p.descripcion,
-                                    p.director,
-                                    p.actores,
-                                    p.duracion,
-                                    (valoracionGuardada + p.valoracion_media) / 2,
-                                    p.preciovisionado,
-                                    p.portada);
-
-                            pelicula = Connector.getConector().put(Pelicula.class, pelicula, "peliculas");
-
-                        }
-
-                        @Override
-                        public void doInUI() {
-                            hideProgress();
-                            auxiliar = 5;
-                            Toast.makeText(getApplicationContext(), "Su valoración ha sido guardada", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-                }
-        );
-
-         */
-
+        // Configuración del botón para adquirir la película y abrir la actividad de la cesta de compras
         adquirir.setOnClickListener(view -> {
 
             Intent intent = new Intent(this, CestaActivity.class);

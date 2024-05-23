@@ -15,7 +15,7 @@ import java.util.List;
 import es.ieslavereda.miravereda.R;
 
 /**
- * Clase que muestra los datos 1 a 1 de cada pelicula, para que se puedan mostrar en el Recycler
+ * Clase que sirve como adaptador para mostrar una lista de películas adquiridas en un RecyclerView.
  */
 public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<AdaptadorPeliculasAdquiridas.ViewHolder> {
 
@@ -24,9 +24,10 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
     private List<Pelicula> peliculas;
 
     /**
-     * Constructor para crear un objeto Adaptador
-     * @param context de que clase se va a obtener la información
-     * @param peliculas lista de peliculas, las cuales se van a visualizar
+     * Constructor para crear un objeto Adaptador de películas adquiridas.
+     *
+     * @param context   El contexto de donde se obtendrá la información.
+     * @param peliculas La lista de películas adquiridas que se visualizará.
      */
     public AdaptadorPeliculasAdquiridas(@NonNull Context context, List<Pelicula> peliculas) {
         this.context = context;
@@ -35,10 +36,11 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
     }
 
     /**
-     * Enlazamos con su layout el adaptador
-     * @param parent el padre de donde obtiene la informacón
-     * @param viewType la vista presente
-     * @return un objeto de tipo ViewHolder
+     * Crea una nueva instancia de ViewHolder al inflar el diseño de un elemento de la lista.
+     *
+     * @param parent   El ViewGroup al que se añadirá la vista después de ser unida a la ventana.
+     * @param viewType El tipo de vista del nuevo ViewHolder.
+     * @return Un objeto ViewHolder que contiene la vista del elemento de la lista.
      */
     @NonNull
     @Override
@@ -48,30 +50,31 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
     }
 
     /**
-     * Muestra la información de todas las peliculas a medida que vas deslizando
-     * @param viewHolder Donde estan los datos de cada una de las películas
-     * @param position La cual esta la pelicula que va iterando
+     * Vincula los datos de una película específica con los elementos de la vista.
+     *
+     * @param viewHolder El ViewHolder que debe ser actualizado para representar el contenido del elemento.
+     * @param position   La posición del elemento en la lista de datos.
      */
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
-
+        // Configuración de los elementos de la vista con los datos de la película en la posición dada
         viewHolder.tvNombreContenido.setText(peliculas.get(position).titulo);
         viewHolder.tvCoste.setText(String.valueOf((int) peliculas.get(position).preciovisionado));
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + peliculas.get(position).portada, viewHolder.iContenido);
     }
 
     /**
-     * Devuelve el tamaño de la lista de peliculas
-     * @return El tamaño de la lista
+     * Devuelve el número total de elementos en la lista de películas adquiridas.
+     *
+     * @return El tamaño de la lista de películas adquiridas.
      */
     @Override
     public int getItemCount() {
         return peliculas.size();
     }
 
-
     /**
-     * Clase donde se enlaza los datos de las peliculas con la app
+     * Clase que representa un elemento de la vista de la lista de películas adquiridas.
      */
     public class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -80,8 +83,9 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
         private TextView tvCoste;
 
         /**
-         * Enlazamos los atributos de la clase con los elementos del layout
-         * @param itemView Define cata item (pelicula) del recycler
+         * Constructor que enlaza los elementos de la vista con los atributos de la clase.
+         *
+         * @param itemView La vista que representa un elemento de la lista.
          */
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -91,6 +95,4 @@ public class AdaptadorPeliculasAdquiridas extends RecyclerView.Adapter<Adaptador
             tvCoste = itemView.findViewById(R.id.tvPrecioAdquirido);
         }
     }
-
 }
-

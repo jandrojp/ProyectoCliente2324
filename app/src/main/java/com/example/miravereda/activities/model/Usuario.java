@@ -2,10 +2,14 @@ package com.example.miravereda.activities.model;
 
 import java.io.Serializable;
 
+import java.io.Serializable;
+
 /**
- * Clase la cual contiene los atributos de un usuario con su constructor
+ * Clase que representa a un usuario del sistema.
  */
 public class Usuario implements Serializable {
+
+    // Atributos del usuario
     public String dni;
     public String usuario;
     public String contrasenya;
@@ -18,17 +22,18 @@ public class Usuario implements Serializable {
     public String tarjeta_credito;
 
     /**
-     * Creamos un usuario con todos sus atributos
-     * @param dni identificador único para cada usuario
-     * @param usuario nombre el cual le servirá para acceder al catálogo
-     * @param contrasenya modificable
-     * @param nombre del usuario
-     * @param apellidos del usuario
-     * @param email correo
-     * @param domicilio direccion de donde vive
-     * @param codigo_postal del domiciclio
-     * @param fecha_nacimiento date
-     * @param tarjeta_credito del usuario
+     * Constructor para crear un usuario con todos sus atributos.
+     *
+     * @param dni Identificador único del usuario.
+     * @param usuario Nombre de usuario que se utilizará para acceder al sistema.
+     * @param contrasenya Contraseña del usuario.
+     * @param nombre Nombre del usuario.
+     * @param apellidos Apellidos del usuario.
+     * @param email Correo electrónico del usuario.
+     * @param domicilio Dirección de domicilio del usuario.
+     * @param codigo_postal Código postal de la dirección del usuario.
+     * @param fecha_nacimiento Fecha de nacimiento del usuario.
+     * @param tarjeta_credito Número de tarjeta de crédito asociada al usuario.
      */
     public Usuario(String dni, String usuario, String contrasenya, String nombre, String apellidos, String email, String domicilio, String codigo_postal, String fecha_nacimiento, String tarjeta_credito) {
         this.dni = dni;

@@ -13,7 +13,7 @@ import java.util.List;
 import es.ieslavereda.miravereda.R;
 
 /**
- * Esta clase representa la lista de peliculas almacenadas en la BBDD
+ * Actividad que muestra una lista de películas utilizando un RecyclerView.
  */
 public class RecyclerActivity extends BaseActivity implements CallInterface {
 
@@ -21,44 +21,51 @@ public class RecyclerActivity extends BaseActivity implements CallInterface {
     private RecyclerView recyclerView;
     private FloatingActionButton bttnExit;
 
-
     /**
-     * Lanzamos la app y la enlazamos con su layout
-     * @param savedInstanceState Contenedor donde se va a almacenar
+     * Método llamado al crear la actividad. Se encarga de inicializar la interfaz de usuario y realizar la llamada para obtener los datos.
+     *
+     * @param savedInstanceState Objeto donde se almacena el estado de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
 
+        // Mostrar la barra de progreso
         showProgress();
+        // Realizar la llamada para obtener los datos
         executeCall(this);
     }
 
     /**
-     * Realizamos la llamada y recogemos los datos en un objeto Root
+     * Método para realizar la llamada y obtener los datos en segundo plano.
      */
     @Override
     public void doInBackground() {
+        // Obtener la lista de películas desde el conector
         peliculas = Connector.getConector().getAsList(Pelicula.class, "peliculas");
     }
 
     /**
-     * Una vez ya se ha realizado la llamada, ocultamos la barra de progreso y presentamos los datos
+     * Método llamado una vez que se ha realizado la llamada en segundo plano. Se encarga de ocultar la barra de progreso y presentar los datos en el RecyclerView.
      */
     @Override
     public void doInUI() {
+        // Ocultar la barra de progreso
         hideProgress();
 
+        // Inicialización del RecyclerView y del botón de salida
         recyclerView = findViewById(R.id.recycler);
         bttnExit = findViewById(R.id.bttnExit);
 
+        // Configuración del adaptador y del diseño del RecyclerView
         Adaptador adaptador = new Adaptador(this, peliculas);
         recyclerView.setAdapter(adaptador);
         recyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        // Configuración del botón de salida para cerrar la actividad
         bttnExit.setOnClickListener(view -> finish());
     }
 

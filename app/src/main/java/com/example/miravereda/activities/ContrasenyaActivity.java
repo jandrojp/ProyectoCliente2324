@@ -15,7 +15,7 @@ import java.util.Optional;
 import es.ieslavereda.miravereda.R;;
 
 /**
- *  Clase la cual te permite modificar la contraseña mediante tu usuario
+ * Actividad para actualizar la contraseña del usuario.
  */
 public class ContrasenyaActivity extends BaseActivity {
 
@@ -26,21 +26,25 @@ public class ContrasenyaActivity extends BaseActivity {
     private FloatingActionButton fabReturn;
 
     /**
-     * Lanzamos la app y la enlazamos con su layout
-     * @param savedInstanceState Contenedor donde se va a almacenar
+     * Método llamado al crear la actividad. Se encarga de inicializar la interfaz de usuario y los componentes.
+     *
+     * @param savedInstanceState Objeto donde se almacena el estado de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contrasenya);
 
+        // Inicialización de los componentes de la interfaz de usuario
         actualizarContrasenya = findViewById(R.id.bttnActualizarContrasenya);
         usuarioActualizar = findViewById(R.id.txtUser);
         nuevaContrasenya = findViewById(R.id.txtPassword);
         fabReturn = findViewById(R.id.fabRet);
 
+        // Configuración del botón flotante para regresar
         fabReturn.setOnClickListener(view -> finish());
 
+        // Configuración del botón para actualizar la contraseña
         actualizarContrasenya.setOnClickListener(
                 v -> {
                     showProgress();
@@ -49,14 +53,18 @@ public class ContrasenyaActivity extends BaseActivity {
 
                         @Override
                         public void doInBackground() {
+                            // Obtención de la lista de usuarios
                             usuarios =  Connector.getConector().getAsList(Usuario.class, "usuarios");
                             String user = usuarioActualizar.getText().toString();
                             String pass = nuevaContrasenya.getText().toString();
 
+                            // Verificación de que los campos no estén vacíos
                             if (!usuarioActualizar.getText().toString().isEmpty() && !nuevaContrasenya.getText().toString().isEmpty()) {
+                                // Búsqueda del usuario en la lista
                                 Optional<Usuario> optional = usuarios.stream().filter(usu -> usu.usuario.equals(user)).findFirst();
 
                                 if (optional.isPresent()) {
+                                    // Si el usuario existe, se actualiza la contraseña
                                     Usuario usuarioSeleccionado = optional.get();
 
                                     Usuario u = new Usuario(usuarioSeleccionado.dni,
@@ -71,7 +79,7 @@ public class ContrasenyaActivity extends BaseActivity {
                                             usuarioSeleccionado.tarjeta_credito);
 
                                     u = Connector.getConector().put(Usuario.class, u, "usuarios");
-                                    result = 1;
+                                    result = 1; // Indicador de éxito
                                 }
 
                             }
@@ -82,6 +90,7 @@ public class ContrasenyaActivity extends BaseActivity {
                         public void doInUI() {
                             hideProgress();
 
+                            // Mostrar mensaje de éxito o error según el resultado
                             if (result == 1) {
                                 Toast.makeText(getApplicationContext(), "Tu contraseña ha sido actualizada", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -95,5 +104,4 @@ public class ContrasenyaActivity extends BaseActivity {
                 }
         );
     }
-
 }

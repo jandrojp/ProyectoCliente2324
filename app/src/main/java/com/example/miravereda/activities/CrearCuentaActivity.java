@@ -14,7 +14,7 @@ import java.util.List;
 import es.ieslavereda.miravereda.R;
 
 /**
- * Clase la cual crea una nueva cuenta si los datos son válidos
+ * Actividad para crear una nueva cuenta de usuario.
  */
 public class CrearCuentaActivity extends BaseActivity {
 
@@ -32,14 +32,16 @@ public class CrearCuentaActivity extends BaseActivity {
     private FloatingActionButton floatingActionButton;
 
     /**
-     * Lanzamos la app y la enlazamos con su layout
-     * @param savedInstanceState Contenedor donde se va a almacenar
+     * Método llamado al crear la actividad. Se encarga de inicializar la interfaz de usuario y los componentes.
+     *
+     * @param savedInstanceState Objeto donde se almacena el estado de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
 
+        // Inicialización de los componentes de la interfaz de usuario
         etNombre = findViewById(R.id.etNombre);
         etApellidos = findViewById(R.id.etApellidos);
         etDNI = findViewById(R.id.etDNI);
@@ -52,8 +54,10 @@ public class CrearCuentaActivity extends BaseActivity {
         crearCuenta = findViewById(R.id.bttnCrear);
         floatingActionButton = findViewById(R.id.fabRet);
 
+        // Configuración del botón flotante para regresar
         floatingActionButton.setOnClickListener(view -> finish());
 
+        // Configuración del botón para crear la cuenta
         crearCuenta.setOnClickListener(
                 v -> {
                     showProgress();
@@ -62,18 +66,20 @@ public class CrearCuentaActivity extends BaseActivity {
 
                         @Override
                         public void doInBackground() {
+                            // Obtención de la lista de usuarios
                             usuarios = Connector.getConector().getAsList(Usuario.class, "usuarios");
                             String nuevoDni = etDNI.getText().toString();
                             String nuevoUsuario = etUsuario.getText().toString();
 
-
+                            // Verificación de que los campos obligatorios no estén vacíos
                             if (!etDNI.getText().toString().isEmpty() && !etUsuario.getText().toString().isEmpty()
                                     && !etContrasenya.getText().toString().isEmpty()) {
+                                // Comprobación de si el DNI o el nombre de usuario ya existen en la base de datos
                                 resultado = usuarios.stream().filter(usu -> usu.dni.equals(nuevoDni) || usu.usuario.equals(nuevoUsuario)).count();
                             }
 
+                            // Si no existe un usuario con el mismo DNI o nombre de usuario, se crea la cuenta
                             if (resultado == 0) {
-
                                 Usuario u = new Usuario(nuevoDni,
                                         nuevoUsuario,
                                         etContrasenya.getText().toString(),
@@ -86,29 +92,24 @@ public class CrearCuentaActivity extends BaseActivity {
                                         etTarjeta.getText().toString());
 
                                 u = Connector.getConector().post(Usuario.class, u, "usuarios");
-
                             }
-
                         }
 
                         @Override
                         public void doInUI() {
                             hideProgress();
 
+                            // Mostrar mensaje de éxito o error según el resultado
                             if (resultado == 0) {
                                 Toast.makeText(getApplicationContext(), "Enhorabuena, su usuario ha sido creado", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                 startActivity(intent);
-
                             } else {
                                 Toast.makeText(getApplicationContext(), "Algo ha ido mal. Revisa los campos", Toast.LENGTH_LONG).show();
                             }
-
                         }
                     });
                 }
         );
-
     }
-
 }

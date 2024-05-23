@@ -13,7 +13,7 @@ import java.util.List;
 import es.ieslavereda.miravereda.R;
 
 /**
- * Clase donde podemos ver las peliculas que se han adquirido y que vamos a comprar
+ * Actividad que muestra la cesta de compras de películas.
  */
 public class CestaActivity extends AppCompatActivity {
 
@@ -24,26 +24,33 @@ public class CestaActivity extends AppCompatActivity {
     private FloatingActionButton floatingActionButton;
 
     /**
-     * Lanzamos la app y la enlazamos con su layout
-     * @param savedInstanceState Contenedor donde se va a almacenar
+     * Método llamado al crear la actividad. Se encarga de inicializar la interfaz de usuario y los componentes.
+     *
+     * @param savedInstanceState Objeto donde se almacena el estado de la actividad.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cesta);
 
+        // Inicialización de los componentes de la interfaz de usuario
         recyclerView = findViewById(R.id.recyclerPeliculasAdquiridas);
         costeTotal = findViewById(R.id.tvTotalPagar);
         floatingActionButton = findViewById(R.id.fabR);
         peliculas = new ArrayList<>();
 
+        // Obtención de la película seleccionada desde los extras del intent
         Bundle extras = getIntent().getExtras();
         p = (Pelicula) extras.get("pelicula");
         peliculas.add(p);
 
+        // Configuración del botón flotante para regresar
         floatingActionButton.setOnClickListener(view -> finish());
 
+        // Configuración del precio total a pagar en la interfaz de usuario
         costeTotal.setText("PRECIO TOTAL:  " + p.preciovisionado + " €");
+
+        // Configuración del RecyclerView y su adaptador
         recyclerView.setAdapter(new AdaptadorPeliculasAdquiridas(this, peliculas));
         recyclerView.addItemDecoration(new DividerItemDecoration(this, RecyclerView.VERTICAL));
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
