@@ -62,8 +62,8 @@ public class Adaptador extends RecyclerView.Adapter<Adaptador.ViewHolder> {
         viewHolder.tvNombreContenido.setText(peliculaList.get(position).titulo);
         viewHolder.tvValoracion.setText(String.valueOf(peliculaList.get(position).valoracion_media));
 
-        Double tiempo = (double) (peliculaList.get(position).duracion / 60);
-        viewHolder.tvDuracion.setText(tiempo + " h");
+
+        viewHolder.tvDuracion.setText(peliculaList.get(position).duracion + " min");
         ImageDownloader.downloadImage(Parameters.ICON_URL_PRE + peliculaList.get(position).portada, viewHolder.iContenido);
 
         // Acción al hacer clic en un elemento de la lista
